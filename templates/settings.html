@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拼多多自动核销系统 - 系统设置</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <nav class="sidebar position-fixed top-0 start-0 w-25 p-3">
+        <div class="d-flex flex-column">
+            <h4 class="mb-4">
+                <i class="bi bi-shop"></i>
+                拼多多自动核销系统
+            </h4>
+            
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/">
+                        <i class="bi bi-speedometer2"></i>
+                        仪表板
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/orders">
+                        <i class="bi bi-list-ul"></i>
+                        订单管理
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/verification">
+                        <i class="bi bi-check-circle"></i>
+                        核销管理
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link active" href="/settings">
+                        <i class="bi bi-gear"></i>
+                        系统设置
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/logs">
+                        <i class="bi bi-file-text"></i>
+                        日志查看
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>系统设置</h2>
+            <div>
+                <button class="btn btn-primary" onclick="saveSettings()">
+                    <i class="bi bi-save"></i>
+                    保存设置
+                </button>
+                <button class="btn btn-outline-secondary" onclick="resetSettings()">
+                    <i class="bi bi-arrow-clockwise"></i>
+                    重置
+                </button>
+            </div>
+        </div>
+
+        <!-- 设置表单 -->
+        <form id="settingsForm">
+            <!-- 基本设置 -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">基本设置</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">运行模式</label>
+                                <select class="form-select" name="test_mode">
+                                    <option value="true" {% if settings.test_mode %}selected{% endif %}>测试模式</option>
+                                    <option value="false" {% if not settings.test_mode %}selected{% endif %}>生产模式</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">调试模式</label>
+                                <select class="form-select" name="debug">
+                                    <option value="true">开启</option>
+                                    <option value="false" selected>关闭</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">订单检查间隔（秒）</label>
+                                <input type="number" class="form-control" name="order_check_interval" 
+                                       value="{{ settings.order_check_interval }}" min="10" max="3600">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">最大重试次数</label>
+                                <input type="number" class="form-control" name="max_retry_times" 
+                                       value="3" min="1" max="10">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API设置 -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">API设置</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">App ID</label>
+                                <input type="text" class="form-control" name="pdd_app_id" 
+                                       value="{{ settings.pdd_app_id or '' }}" placeholder="请输入App ID">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">App Secret</label>
+                                <input type="password" class="form-control" name="pdd_app_secret" 
+                                       value="{{ settings.pdd_app_secret or '' }}" placeholder="请输入App Secret">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Access Token</label>
+                                <input type="password" class="form-control" name="pdd_access_token" 
+                                       value="{{ settings.pdd_access_token or '' }}" placeholder="请输入Access Token">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">回调地址</label>
+                                <input type="url" class="form-control" name="pdd_redirect_uri" 
+                                       value="{{ settings.pdd_redirect_uri or '' }}" placeholder="请输入回调地址">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">API超时时间（秒）</label>
+                                <input type="number" class="form-control" name="api_timeout" 
+                                       value="{{ settings.api_timeout or 30 }}" min="5" max="300">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">API调用频率限制</label>
+                                <input type="number" class="form-control" name="api_rate_limit" 
+                                       value="100" min="1" max="1000" placeholder="每分钟最大调用次数">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 通知设置 -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">通知设置</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="notification_enabled" 
+                                           {% if settings.notification_enabled %}checked{% endif %}>
+                                    <label class="form-check-label">启用通知</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="email_notification" checked>
+                                    <label class="form-check-label">邮件通知</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">SMTP服务器</label>
+                                <input type="text" class="form-control" name="email_smtp_server" 
+                                       placeholder="smtp.example.com">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">SMTP端口</label>
+                                <input type="number" class="form-control" name="email_smtp_port" 
+                                       value="587" min="1" max="65535">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">邮箱用户名</label>
+                                <input type="email" class="form-control" name="email_username" 
+                                       placeholder="your-email@example.com">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">邮箱密码</label>
+                                <input type="password" class="form-control" name="email_password" 
+                                       placeholder="请输入邮箱密码">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">接收通知邮箱</label>
+                                <input type="email" class="form-control" name="email_to" 
+                                       placeholder="admin@example.com">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 核销规则设置 -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">核销规则设置</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">自动核销延迟（分钟）</label>
+                                <input type="number" class="form-control" name="auto_verify_delay" 
+                                       value="5" min="0" max="1440">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">核销码长度</label>
+                                <input type="number" class="form-control" name="verification_code_length" 
+                                       value="16" min="8" max="32">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="auto_verify_enabled" checked>
+                                    <label class="form-check-label">启用自动核销</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="verify_on_ship" checked>
+                                    <label class="form-check-label">发货时自动核销</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 数据库设置 -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">数据库设置</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">数据库URL</label>
+                                <input type="text" class="form-control" name="database_url" 
+                                       value="{{ settings.database_url or 'sqlite:///./pdd_auto_verify.db' }}" 
+                                       placeholder="sqlite:///./pdd_auto_verify.db">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">连接池大小</label>
+                                <input type="number" class="form-control" name="db_pool_size" 
+                                       value="10" min="1" max="100">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">连接超时（秒）</label>
+                                <input type="number" class="form-control" name="db_timeout" 
+                                       value="30" min="5" max="300">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- 系统操作 -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">系统操作</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <button class="btn btn-outline-primary w-100" onclick="testApiConnection()">
+                            <i class="bi bi-wifi"></i>
+                            测试API连接
+                        </button>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <button class="btn btn-outline-success w-100" onclick="testEmailNotification()">
+                            <i class="bi bi-envelope"></i>
+                            测试邮件通知
+                        </button>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <button class="btn btn-outline-warning w-100" onclick="backupDatabase()">
+                            <i class="bi bi-download"></i>
+                            备份数据库
+                        </button>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <button class="btn btn-outline-danger w-100" onclick="restartSystem()">
+                            <i class="bi bi-arrow-clockwise"></i>
+                            重启系统
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 保存设置
+        function saveSettings() {
+            const formData = new FormData(document.getElementById('settingsForm'));
+            const settings = {};
+            
+            for (let [key, value] of formData.entries()) {
+                settings[key] = value;
+            }
+            
+            fetch('/api/settings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(settings)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('设置保存成功！');
+                    location.reload();
+                } else {
+                    alert('设置保存失败：' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('请求失败：' + error);
+            });
+        }
+
+        // 重置设置
+        function resetSettings() {
+            if (confirm('确定要重置所有设置吗？')) {
+                location.reload();
+            }
+        }
+
+        // 测试API连接
+        function testApiConnection() {
+            fetch('/api/test-connection', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('API连接测试成功！');
+                } else {
+                    alert('API连接测试失败：' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('测试失败：' + error);
+            });
+        }
+
+        // 测试邮件通知
+        function testEmailNotification() {
+            fetch('/api/test-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('邮件通知测试成功！');
+                } else {
+                    alert('邮件通知测试失败：' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('测试失败：' + error);
+            });
+        }
+
+        // 备份数据库
+        function backupDatabase() {
+            if (confirm('确定要备份数据库吗？')) {
+                fetch('/api/backup-database', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('数据库备份成功！');
+                    } else {
+                        alert('数据库备份失败：' + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert('备份失败：' + error);
+                });
+            }
+        }
+
+        // 重启系统
+        function restartSystem() {
+            if (confirm('确定要重启系统吗？这将停止所有正在运行的任务。')) {
+                fetch('/api/restart-system', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('系统重启命令已发送！');
+                    } else {
+                        alert('系统重启失败：' + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert('重启失败：' + error);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

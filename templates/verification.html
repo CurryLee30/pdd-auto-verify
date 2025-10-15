@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拼多多自动核销系统 - 核销管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .status-badge {
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <nav class="sidebar position-fixed top-0 start-0 w-25 p-3">
+        <div class="d-flex flex-column">
+            <h4 class="mb-4">
+                <i class="bi bi-shop"></i>
+                拼多多自动核销系统
+            </h4>
+            
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/">
+                        <i class="bi bi-speedometer2"></i>
+                        仪表板
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/orders">
+                        <i class="bi bi-list-ul"></i>
+                        订单管理
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link active" href="/verification">
+                        <i class="bi bi-check-circle"></i>
+                        核销管理
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/settings">
+                        <i class="bi bi-gear"></i>
+                        系统设置
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/logs">
+                        <i class="bi bi-file-text"></i>
+                        日志查看
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>核销管理</h2>
+            <div>
+                <button class="btn btn-primary" onclick="refreshRecords()">
+                    <i class="bi bi-arrow-clockwise"></i>
+                    刷新
+                </button>
+                <button class="btn btn-success" onclick="autoVerifyAll()">
+                    <i class="bi bi-check-circle"></i>
+                    自动核销所有
+                </button>
+                <button class="btn btn-outline-secondary" onclick="exportRecords()">
+                    <i class="bi bi-download"></i>
+                    导出记录
+                </button>
+            </div>
+        </div>
+
+        <!-- 核销记录列表 -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">核销记录</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>订单号</th>
+                                <th>核销码</th>
+                                <th>核销状态</th>
+                                <th>核销时间</th>
+                                <th>核销方式</th>
+                                <th>备注</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for record in records %}
+                            <tr>
+                                <td>
+                                    <code>{{ record.order_sn }}</code>
+                                </td>
+                                <td>
+                                    <code>{{ record.verification_code }}</code>
+                                </td>
+                                <td>
+                                    {% if record.verification_status %}
+                                        <span class="badge bg-success status-badge">已核销</span>
+                                    {% else %}
+                                        <span class="badge bg-warning status-badge">未核销</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if record.verification_time %}
+                                        {{ record.verification_time.strftime('%Y-%m-%d %H:%M:%S') }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if record.verification_method == 'auto' %}
+                                        <span class="badge bg-primary">自动</span>
+                                    {% elif record.verification_method == 'manual' %}
+                                        <span class="badge bg-info">手动</span>
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                                <td>{{ record.remark or '-' }}</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <button class="btn btn-outline-primary" onclick="viewRecord('{{ record.id }}')">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                        {% if not record.verification_status %}
+                                        <button class="btn btn-outline-success" onclick="manualVerify('{{ record.id }}')">
+                                            <i class="bi bi-check"></i>
+                                        </button>
+                                        {% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 分页 -->
+                <nav aria-label="核销记录分页">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item {% if page <= 1 %}disabled{% endif %}">
+                            <a class="page-link" href="?page={{ page - 1 }}">上一页</a>
+                        </li>
+                        <li class="page-item active">
+                            <span class="page-link">{{ page }}</span>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page + 1 }}">下一页</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- 核销记录详情模态框 -->
+    <div class="modal fade" id="recordModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">核销记录详情</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="recordDetails">
+                    <!-- 记录详情内容 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 手动核销模态框 -->
+    <div class="modal fade" id="manualVerifyModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">手动核销</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="manualVerifyForm">
+                        <div class="mb-3">
+                            <label class="form-label">记录ID</label>
+                            <input type="text" class="form-control" id="recordId" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">订单号</label>
+                            <input type="text" class="form-control" id="recordOrderSn" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">核销码</label>
+                            <input type="text" class="form-control" id="recordVerifyCode" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">备注</label>
+                            <textarea class="form-control" id="recordRemark" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="submitManualVerify()">确认核销</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 刷新记录
+        function refreshRecords() {
+            location.reload();
+        }
+
+        // 查看记录详情
+        function viewRecord(recordId) {
+            fetch(`/api/verification-records/${recordId}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('recordDetails').innerHTML = `
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>记录ID:</strong> ${data.id}</p>
+                                <p><strong>订单号:</strong> ${data.order_sn}</p>
+                                <p><strong>核销码:</strong> <code>${data.verification_code}</code></p>
+                                <p><strong>核销状态:</strong> ${data.verification_status ? '已核销' : '未核销'}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>核销时间:</strong> ${data.verification_time || '-'}</p>
+                                <p><strong>核销方式:</strong> ${data.verification_method || '-'}</p>
+                                <p><strong>创建时间:</strong> ${data.created_at}</p>
+                                <p><strong>更新时间:</strong> ${data.updated_at}</p>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <h6>备注:</h6>
+                            <p>${data.remark || '无'}</p>
+                        </div>
+                    `;
+                    new bootstrap.Modal(document.getElementById('recordModal')).show();
+                })
+                .catch(error => {
+                    alert('获取记录详情失败：' + error);
+                });
+        }
+
+        // 手动核销
+        function manualVerify(recordId) {
+            fetch(`/api/verification-records/${recordId}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('recordId').value = data.id;
+                    document.getElementById('recordOrderSn').value = data.order_sn;
+                    document.getElementById('recordVerifyCode').value = data.verification_code;
+                    document.getElementById('recordRemark').value = data.remark || '';
+                    new bootstrap.Modal(document.getElementById('manualVerifyModal')).show();
+                })
+                .catch(error => {
+                    alert('获取记录信息失败：' + error);
+                });
+        }
+
+        // 提交手动核销
+        function submitManualVerify() {
+            const recordId = document.getElementById('recordId').value;
+            const remark = document.getElementById('recordRemark').value;
+            
+            fetch(`/api/verification-records/${recordId}/verify`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    remark: remark
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('核销成功！');
+                    bootstrap.Modal.getInstance(document.getElementById('manualVerifyModal')).hide();
+                    location.reload();
+                } else {
+                    alert('核销失败：' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('请求失败：' + error);
+            });
+        }
+
+        // 自动核销所有
+        function autoVerifyAll() {
+            if (confirm('确定要自动核销所有未核销的记录吗？')) {
+                fetch('/api/auto-verify-all', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('自动核销完成！');
+                        location.reload();
+                    } else {
+                        alert('自动核销失败：' + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert('请求失败：' + error);
+                });
+            }
+        }
+
+        // 导出记录
+        function exportRecords() {
+            window.open('/api/verification-records/export', '_blank');
+        }
+    </script>
+</body>
+</html>

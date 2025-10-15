@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拼多多自动核销系统 - 仪表板</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .stat-card {
+            border-left: 4px solid #007bff;
+        }
+        .stat-card.success {
+            border-left-color: #28a745;
+        }
+        .stat-card.warning {
+            border-left-color: #ffc107;
+        }
+        .stat-card.danger {
+            border-left-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <nav class="sidebar position-fixed top-0 start-0 w-25 p-3">
+        <div class="d-flex flex-column">
+            <h4 class="mb-4">
+                <i class="bi bi-shop"></i>
+                拼多多自动核销系统
+            </h4>
+            
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item mb-2">
+                    <a class="nav-link active" href="/">
+                        <i class="bi bi-speedometer2"></i>
+                        仪表板
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/orders">
+                        <i class="bi bi-list-ul"></i>
+                        订单管理
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/verification">
+                        <i class="bi bi-check-circle"></i>
+                        核销管理
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/settings">
+                        <i class="bi bi-gear"></i>
+                        系统设置
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/logs">
+                        <i class="bi bi-file-text"></i>
+                        日志查看
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="mt-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">系统状态</h6>
+                        <span class="badge bg-success">
+                            <i class="bi bi-circle-fill"></i>
+                            {{ system_status }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>仪表板</h2>
+            <div>
+                <button class="btn btn-primary" onclick="refreshStats()">
+                    <i class="bi bi-arrow-clockwise"></i>
+                    刷新
+                </button>
+            </div>
+        </div>
+
+        <!-- 统计卡片 -->
+        <div class="row mb-4">
+            <div class="col-md-3 mb-3">
+                <div class="card stat-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title text-muted">总订单数</h6>
+                                <h3 class="mb-0">{{ stats.total_orders }}</h3>
+                            </div>
+                            <div class="text-primary">
+                                <i class="bi bi-list-ul fs-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-3">
+                <div class="card stat-card warning">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title text-muted">待处理订单</h6>
+                                <h3 class="mb-0">{{ stats.pending_orders }}</h3>
+                            </div>
+                            <div class="text-warning">
+                                <i class="bi bi-clock fs-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-3">
+                <div class="card stat-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title text-muted">已发货订单</h6>
+                                <h3 class="mb-0">{{ stats.shipped_orders }}</h3>
+                            </div>
+                            <div class="text-info">
+                                <i class="bi bi-truck fs-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-3">
+                <div class="card stat-card success">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title text-muted">已完成订单</h6>
+                                <h3 class="mb-0">{{ stats.finished_orders }}</h3>
+                            </div>
+                            <div class="text-success">
+                                <i class="bi bi-check-circle fs-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 核销统计 -->
+        <div class="row mb-4">
+            <div class="col-md-6 mb-3">
+                <div class="card stat-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title text-muted">总核销数</h6>
+                                <h3 class="mb-0">{{ stats.total_verifications }}</h3>
+                            </div>
+                            <div class="text-primary">
+                                <i class="bi bi-check-square fs-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-3">
+                <div class="card stat-card success">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="card-title text-muted">成功核销</h6>
+                                <h3 class="mb-0">{{ stats.successful_verifications }}</h3>
+                            </div>
+                            <div class="text-success">
+                                <i class="bi bi-check-circle-fill fs-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 快速操作 -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">快速操作</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <button class="btn btn-outline-primary w-100" onclick="processPendingOrders()">
+                                    <i class="bi bi-play-circle"></i>
+                                    处理待处理订单
+                                </button>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <button class="btn btn-outline-success w-100" onclick="autoVerifyOrders()">
+                                    <i class="bi bi-check-circle"></i>
+                                    自动核销订单
+                                </button>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <button class="btn btn-outline-info w-100" onclick="viewLogs()">
+                                    <i class="bi bi-file-text"></i>
+                                    查看系统日志
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 系统信息 -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">系统信息</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>最后更新:</strong> {{ stats.last_update }}</p>
+                                <p><strong>系统状态:</strong> 
+                                    <span class="badge bg-success">{{ stats.system_status }}</span>
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>运行模式:</strong> 
+                                    {% if stats.test_mode %}
+                                        <span class="badge bg-warning">测试模式</span>
+                                    {% else %}
+                                        <span class="badge bg-primary">生产模式</span>
+                                    {% endif %}
+                                </p>
+                                <p><strong>检查间隔:</strong> {{ stats.order_check_interval }}秒</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 刷新统计数据
+        function refreshStats() {
+            location.reload();
+        }
+
+        // 处理待处理订单
+        function processPendingOrders() {
+            if (confirm('确定要处理所有待处理订单吗？')) {
+                fetch('/api/process-orders', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('订单处理完成！');
+                        location.reload();
+                    } else {
+                        alert('订单处理失败：' + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert('请求失败：' + error);
+                });
+            }
+        }
+
+        // 自动核销订单
+        function autoVerifyOrders() {
+            if (confirm('确定要执行自动核销吗？')) {
+                fetch('/api/auto-verify', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('自动核销完成！');
+                        location.reload();
+                    } else {
+                        alert('自动核销失败：' + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert('请求失败：' + error);
+                });
+            }
+        }
+
+        // 查看日志
+        function viewLogs() {
+            window.open('/logs', '_blank');
+        }
+
+        // 自动刷新（每30秒）
+        setInterval(refreshStats, 30000);
+    </script>
+</body>
+</html>

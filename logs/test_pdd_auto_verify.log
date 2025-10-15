@@ -1,0 +1,674 @@
+2025-10-14 10:59:33 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 10:59:33 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 10:59:33 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 10:59:33 | INFO     | __main__:__init__:32 - 测试模式初始化完成
+2025-10-14 10:59:33 | INFO     | __main__:run_full_test:177 - 开始运行完整测试
+2025-10-14 10:59:33 | INFO     | __main__:setup_test_environment:36 - 开始设置测试环境
+2025-10-14 10:59:33 | INFO     | utils.test_data_generator:generate_all_test_data:163 - 开始生成所有测试数据
+2025-10-14 10:59:33 | INFO     | utils.test_data_generator:clear_test_data:136 - 开始清除测试数据
+2025-10-14 10:59:33 | ERROR    | utils.test_data_generator:clear_test_data:159 - 清除测试数据失败: (sqlite3.OperationalError) no such table: orders
+[SQL: SELECT orders.id AS orders_id, orders.order_sn AS orders_order_sn, orders.buyer_id AS orders_buyer_id, orders.buyer_name AS orders_buyer_name, orders.order_status AS orders_order_status, orders.pay_time AS orders_pay_time, orders.shipped_at AS orders_shipped_at, orders.received_at AS orders_received_at, orders.finished_at AS orders_finished_at, orders.order_amount AS orders_order_amount, orders.goods_info AS orders_goods_info, orders.delivery_info AS orders_delivery_info, orders.verification_code AS orders_verification_code, orders.verification_status AS orders_verification_status, orders.verification_time AS orders_verification_time, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.order_sn LIKE ?]
+[parameters: ('TEST%',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-14 10:59:33 | INFO     | utils.test_data_generator:generate_test_products:60 - 开始生成 5 个测试商品
+2025-10-14 10:59:33 | ERROR    | __main__:run_full_test:198 - 完整测试失败: (sqlite3.OperationalError) no such table: products
+[SQL: INSERT INTO products (goods_id, goods_name, goods_type, goods_status, price, stock, description, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id]
+[parameters: ('goods_0', '测试虚拟商品0', 1, 1, 85.89, 352, '这是测试虚拟商品0的描述，用于测试自动核销功能', '2025-10-14 10:59:33.278806', '2025-10-14 10:59:33.278806')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-14 10:59:33 | INFO     | __main__:cleanup:204 - 测试模式清理完成
+2025-10-14 11:00:15 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:00:15 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:00:15 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:00:15 | INFO     | __main__:__init__:32 - 测试模式初始化完成
+2025-10-14 11:00:15 | INFO     | __main__:run_full_test:177 - 开始运行完整测试
+2025-10-14 11:00:15 | INFO     | __main__:setup_test_environment:36 - 开始设置测试环境
+2025-10-14 11:00:15 | INFO     | utils.test_data_generator:generate_all_test_data:163 - 开始生成所有测试数据
+2025-10-14 11:00:15 | INFO     | utils.test_data_generator:clear_test_data:136 - 开始清除测试数据
+2025-10-14 11:00:15 | ERROR    | utils.test_data_generator:clear_test_data:159 - 清除测试数据失败: (sqlite3.OperationalError) no such table: orders
+[SQL: SELECT orders.id AS orders_id, orders.order_sn AS orders_order_sn, orders.buyer_id AS orders_buyer_id, orders.buyer_name AS orders_buyer_name, orders.order_status AS orders_order_status, orders.pay_time AS orders_pay_time, orders.shipped_at AS orders_shipped_at, orders.received_at AS orders_received_at, orders.finished_at AS orders_finished_at, orders.order_amount AS orders_order_amount, orders.goods_info AS orders_goods_info, orders.delivery_info AS orders_delivery_info, orders.verification_code AS orders_verification_code, orders.verification_status AS orders_verification_status, orders.verification_time AS orders_verification_time, orders.created_at AS orders_created_at, orders.updated_at AS orders_updated_at 
+FROM orders 
+WHERE orders.order_sn LIKE ?]
+[parameters: ('TEST%',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-14 11:00:15 | INFO     | utils.test_data_generator:generate_test_products:60 - 开始生成 5 个测试商品
+2025-10-14 11:00:15 | ERROR    | __main__:run_full_test:198 - 完整测试失败: (sqlite3.OperationalError) no such table: products
+[SQL: INSERT INTO products (goods_id, goods_name, goods_type, goods_status, price, stock, description, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING id]
+[parameters: ('goods_0', '测试虚拟商品0', 1, 1, 45.51, 760, '这是测试虚拟商品0的描述，用于测试自动核销功能', '2025-10-14 11:00:15.581948', '2025-10-14 11:00:15.581948')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-14 11:00:15 | INFO     | __main__:cleanup:204 - 测试模式清理完成
+2025-10-14 11:01:55 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:01:55 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:01:55 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:01:55 | INFO     | __main__:__init__:32 - 测试模式初始化完成
+2025-10-14 11:01:55 | INFO     | __main__:run_full_test:177 - 开始运行完整测试
+2025-10-14 11:01:55 | INFO     | __main__:setup_test_environment:36 - 开始设置测试环境
+2025-10-14 11:01:55 | INFO     | utils.test_data_generator:generate_all_test_data:163 - 开始生成所有测试数据
+2025-10-14 11:01:55 | INFO     | utils.test_data_generator:clear_test_data:136 - 开始清除测试数据
+2025-10-14 11:01:55 | INFO     | utils.test_data_generator:clear_test_data:155 - 测试数据清除完成
+2025-10-14 11:01:55 | INFO     | utils.test_data_generator:generate_test_products:60 - 开始生成 5 个测试商品
+2025-10-14 11:01:55 | INFO     | utils.test_data_generator:generate_test_products:84 - 成功生成 5 个测试商品
+2025-10-14 11:01:55 | INFO     | utils.test_data_generator:generate_test_orders:22 - 开始生成 10 个测试订单
+2025-10-14 11:01:55 | INFO     | utils.test_data_generator:generate_test_orders:54 - 成功生成 10 个测试订单
+2025-10-14 11:01:55 | INFO     | utils.test_data_generator:generate_test_verification_records:90 - 开始生成 5 个测试核销记录
+2025-10-14 11:01:55 | INFO     | utils.test_data_generator:generate_test_verification_records:125 - 成功生成 5 个测试核销记录
+2025-10-14 11:01:55 | INFO     | utils.test_data_generator:generate_all_test_data:177 - 所有测试数据生成完成
+2025-10-14 11:01:55 | INFO     | __main__:setup_test_environment:44 - 测试环境设置完成:
+2025-10-14 11:01:55 | INFO     | __main__:setup_test_environment:45 - - 生成了 5 个测试商品
+2025-10-14 11:01:55 | INFO     | __main__:setup_test_environment:46 - - 生成了 10 个测试订单
+2025-10-14 11:01:55 | INFO     | __main__:setup_test_environment:47 - - 生成了 5 个测试核销记录
+2025-10-14 11:01:57 | INFO     | __main__:test_api_client:110 - 开始测试API客户端功能
+2025-10-14 11:01:57 | INFO     | __main__:test_api_client:116 - 测试获取订单列表
+2025-10-14 11:01:57 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.list.get, 参数: {'page': 1, 'page_size': 5}
+2025-10-14 11:01:57 | INFO     | __main__:test_api_client:118 - 订单列表: {'order_list_get_response': {'order_list': [{'order_sn': 'TEST202510140000', 'buyer_id': 'buyer_0000', 'buyer_name': '测试买家0', 'order_status': 0, 'pay_time': '2025-10-13 11:01:55', 'order_amount': 44.88, 'goods_list': [{'goods_id': 'goods_0', 'goods_name': '测试虚拟商品0', 'goods_type': 2, 'quantity': 1, 'price': 89.74}], 'created_at': '2025-10-13 11:01:55'}, {'order_sn': 'TEST202510140001', 'buyer_id': 'buyer_0001', 'buyer_name': '测试买家1', 'order_status': 0, 'pay_time': '2025-10-13 11:31:55', 'order_amount': 12.9, 'goods_list': [{'goods_id': 'goods_1', 'goods_name': '测试虚拟商品1', 'goods_type': 1, 'quantity': 1, 'price': 89.94}], 'created_at': '2025-10-13 11:31:55'}, {'order_sn': 'TEST202510140002', 'buyer_id': 'buyer_0002', 'buyer_name': '测试买家2', 'order_status': 0, 'pay_time': '2025-10-13 12:01:55', 'order_amount': 87.24, 'goods_list': [{'goods_id': 'goods_2', 'goods_name': '测试虚拟商品2', 'goods_type': 1, 'quantity': 1, 'price': 13.54}], 'created_at': '2025-10-13 12:01:55'}, {'order_sn': 'TEST202510140003', 'buyer_id': 'buyer_0003', 'buyer_name': '测试买家3', 'order_status': 1, 'pay_time': '2025-10-13 12:31:55', 'order_amount': 62.23, 'goods_list': [{'goods_id': 'goods_3', 'goods_name': '测试虚拟商品3', 'goods_type': 2, 'quantity': 1, 'price': 73.22}], 'created_at': '2025-10-13 12:31:55'}, {'order_sn': 'TEST202510140004', 'buyer_id': 'buyer_0004', 'buyer_name': '测试买家4', 'order_status': 2, 'pay_time': '2025-10-13 13:01:55', 'order_amount': 65.04, 'goods_list': [{'goods_id': 'goods_4', 'goods_name': '测试虚拟商品4', 'goods_type': 3, 'quantity': 1, 'price': 23.29}], 'created_at': '2025-10-13 13:01:55'}], 'total_count': 10, 'page': 1, 'page_size': 5}}
+2025-10-14 11:01:57 | INFO     | __main__:test_api_client:121 - 测试获取商品列表
+2025-10-14 11:01:57 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.goods.list.get, 参数: {'page': 1, 'page_size': 5}
+2025-10-14 11:01:57 | INFO     | __main__:test_api_client:123 - 商品列表: {'goods_list_get_response': {'goods_list': [{'goods_id': 'goods_0', 'goods_name': '测试虚拟商品0', 'goods_type': 1, 'goods_status': 1, 'price': 94.11, 'stock': 987, 'description': '这是测试虚拟商品0的描述'}, {'goods_id': 'goods_1', 'goods_name': '测试虚拟商品1', 'goods_type': 1, 'goods_status': 1, 'price': 27.59, 'stock': 762, 'description': '这是测试虚拟商品1的描述'}, {'goods_id': 'goods_2', 'goods_name': '测试虚拟商品2', 'goods_type': 3, 'goods_status': 1, 'price': 82.78, 'stock': 564, 'description': '这是测试虚拟商品2的描述'}, {'goods_id': 'goods_3', 'goods_name': '测试虚拟商品3', 'goods_type': 1, 'goods_status': 1, 'price': 32.6, 'stock': 195, 'description': '这是测试虚拟商品3的描述'}, {'goods_id': 'goods_4', 'goods_name': '测试虚拟商品4', 'goods_type': 2, 'goods_status': 1, 'price': 90.97, 'stock': 526, 'description': '这是测试虚拟商品4的描述'}], 'total_count': 5, 'page': 1, 'page_size': 5}}
+2025-10-14 11:01:57 | INFO     | __main__:test_api_client:126 - 测试获取核销记录
+2025-10-14 11:01:57 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.verification.record.get, 参数: {'page': 1, 'page_size': 5}
+2025-10-14 11:01:58 | INFO     | __main__:test_api_client:128 - 核销记录: {'verification_record_get_response': {'records': [], 'total_count': 0, 'page': 1, 'page_size': 5}}
+2025-10-14 11:01:58 | INFO     | __main__:test_api_client:130 - API客户端功能测试完成
+2025-10-14 11:01:58 | INFO     | __main__:test_order_monitoring:53 - 开始测试订单监控功能
+2025-10-14 11:01:58 | INFO     | core.order_manager:get_pending_orders:32 - 获取待处理订单: 2025-10-13 11:01:58 - 2025-10-14 11:01:58
+2025-10-14 11:01:58 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.list.get, 参数: {'start_time': '2025-10-13 11:01:58', 'end_time': '2025-10-14 11:01:58', 'order_status': 1, 'page_size': 100}
+2025-10-14 11:01:58 | INFO     | core.order_manager:get_pending_orders:43 - 获取到 3 个待处理订单
+2025-10-14 11:01:58 | INFO     | __main__:test_order_monitoring:58 - 获取到 3 个待处理订单
+2025-10-14 11:01:58 | INFO     | core.order_manager:process_order:59 - 开始处理订单: TEST202510140003
+2025-10-14 11:01:58 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.detail.get, 参数: {'order_sn': 'TEST202510140003'}
+2025-10-14 11:01:58 | INFO     | core.order_manager:_save_order_to_db:112 - 订单 TEST202510140003 已存在，更新信息
+2025-10-14 11:01:58 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.goods.send, 参数: {'order_sn': 'TEST202510140003', 'goods_info': {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': 'GUQFHH9PIA6PB52L', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:01:58'}}
+2025-10-14 11:01:59 | INFO     | core.mock_api_client:_mock_send_order_goods:187 - [模拟API] 订单 TEST202510140003 发货成功
+2025-10-14 11:01:59 | ERROR    | core.order_manager:_auto_ship_order:163 - 自动发货失败: 更新订单失败: (sqlite3.ProgrammingError) Error binding parameter 2: type 'dict' is not supported
+[SQL: UPDATE orders SET shipped_at=?, goods_info=?, updated_at=? WHERE orders.id = ?]
+[parameters: ('2025-10-14 11:01:59.158472', {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': 'GUQFHH9PIA6PB52L', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:01:58'}, '2025-10-14 11:01:59.158472', 4)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-10-14 11:01:59 | ERROR    | core.order_manager:process_order:86 - 订单 TEST202510140003 处理失败
+2025-10-14 11:01:59 | INFO     | core.order_manager:process_order:59 - 开始处理订单: TEST202510140006
+2025-10-14 11:01:59 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.detail.get, 参数: {'order_sn': 'TEST202510140006'}
+2025-10-14 11:01:59 | INFO     | core.order_manager:_save_order_to_db:112 - 订单 TEST202510140006 已存在，更新信息
+2025-10-14 11:01:59 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.goods.send, 参数: {'order_sn': 'TEST202510140006', 'goods_info': {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': 'AOBEYMJ8ZGCJFPAO', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:01:59'}}
+2025-10-14 11:01:59 | INFO     | core.mock_api_client:_mock_send_order_goods:187 - [模拟API] 订单 TEST202510140006 发货成功
+2025-10-14 11:01:59 | ERROR    | core.order_manager:_auto_ship_order:163 - 自动发货失败: 更新订单失败: (sqlite3.ProgrammingError) Error binding parameter 2: type 'dict' is not supported
+[SQL: UPDATE orders SET shipped_at=?, goods_info=?, updated_at=? WHERE orders.id = ?]
+[parameters: ('2025-10-14 11:01:59.645989', {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': 'AOBEYMJ8ZGCJFPAO', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:01:59'}, '2025-10-14 11:01:59.645989', 7)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-10-14 11:01:59 | ERROR    | core.order_manager:process_order:86 - 订单 TEST202510140006 处理失败
+2025-10-14 11:01:59 | INFO     | core.order_manager:process_order:59 - 开始处理订单: TEST202510140007
+2025-10-14 11:01:59 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.detail.get, 参数: {'order_sn': 'TEST202510140007'}
+2025-10-14 11:01:59 | INFO     | core.order_manager:_save_order_to_db:112 - 订单 TEST202510140007 已存在，更新信息
+2025-10-14 11:01:59 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.goods.send, 参数: {'order_sn': 'TEST202510140007', 'goods_info': {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': '2J8R4PIMCVXZGF98', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:01:59'}}
+2025-10-14 11:02:00 | INFO     | core.mock_api_client:_mock_send_order_goods:187 - [模拟API] 订单 TEST202510140007 发货成功
+2025-10-14 11:02:00 | ERROR    | core.order_manager:_auto_ship_order:163 - 自动发货失败: 更新订单失败: (sqlite3.ProgrammingError) Error binding parameter 3: type 'dict' is not supported
+[SQL: UPDATE orders SET order_status=?, shipped_at=?, goods_info=?, updated_at=? WHERE orders.id = ?]
+[parameters: (2, '2025-10-14 11:02:00.415479', {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': '2J8R4PIMCVXZGF98', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:01:59'}, '2025-10-14 11:02:00.415479', 8)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-10-14 11:02:00 | ERROR    | core.order_manager:process_order:86 - 订单 TEST202510140007 处理失败
+2025-10-14 11:02:00 | INFO     | __main__:test_order_monitoring:66 - 订单监控测试完成，成功处理 0/3 个订单
+2025-10-14 11:02:00 | INFO     | __main__:test_verification:73 - 开始测试核销功能
+2025-10-14 11:02:00 | INFO     | __main__:test_verification:78 - 获取到 3 个未核销订单
+2025-10-14 11:02:00 | INFO     | __main__:test_verification:85 - 测试核销订单: TEST202510140003
+2025-10-14 11:02:00 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140003, 核销码: VF9KBYK4MSLOE0DI
+2025-10-14 11:02:00 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140003', 'verification_code': 'VF9KBYK4MSLOE0DI'}
+2025-10-14 11:02:00 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140003 核销成功
+2025-10-14 11:02:00 | INFO     | core.verification:verify_order:56 - 订单 TEST202510140003 核销成功
+2025-10-14 11:02:00 | INFO     | __main__:test_verification:87 - 核销结果: {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140003', 'verification_time': '2025-10-14T11:02:00.853134'}
+2025-10-14 11:02:00 | INFO     | __main__:test_verification:99 - 测试批量核销 3 个订单
+2025-10-14 11:02:00 | INFO     | core.verification:batch_verify_orders:89 - 开始批量核销，共 3 个订单
+2025-10-14 11:02:00 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140003, 核销码: VF9KBYK4MSLOE0DI
+2025-10-14 11:02:00 | ERROR    | core.verification:verify_order:77 - 核销验证失败: 订单 TEST202510140003 状态不正确，无法核销
+2025-10-14 11:02:00 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140006, 核销码: OCJS3I8QODJKFKZT
+2025-10-14 11:02:00 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140006', 'verification_code': 'OCJS3I8QODJKFKZT'}
+2025-10-14 11:02:00 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140006 核销成功
+2025-10-14 11:02:00 | INFO     | core.verification:verify_order:56 - 订单 TEST202510140006 核销成功
+2025-10-14 11:02:00 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140008, 核销码: 0TJUPSM1QFOXDMAQ
+2025-10-14 11:02:00 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140008', 'verification_code': '0TJUPSM1QFOXDMAQ'}
+2025-10-14 11:02:01 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140008 核销成功
+2025-10-14 11:02:01 | INFO     | core.verification:verify_order:56 - 订单 TEST202510140008 核销成功
+2025-10-14 11:02:01 | INFO     | core.verification:batch_verify_orders:114 - 批量核销完成，成功: 2, 失败: 1
+2025-10-14 11:02:01 | INFO     | __main__:test_verification:101 - 批量核销结果: {'total': 3, 'success': 2, 'failed': 1, 'results': [{'success': False, 'message': '订单 TEST202510140003 状态不正确，无法核销', 'order_sn': 'TEST202510140003'}, {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140006', 'verification_time': '2025-10-14T11:02:00.994859'}, {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140008', 'verification_time': '2025-10-14T11:02:01.237390'}]}
+2025-10-14 11:02:01 | INFO     | __main__:test_verification:103 - 核销功能测试完成
+2025-10-14 11:02:01 | INFO     | __main__:run_full_test:195 - 完整测试运行完成
+2025-10-14 11:02:01 | INFO     | __main__:cleanup:204 - 测试模式清理完成
+2025-10-14 11:02:34 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:02:34 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:02:34 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:02:34 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:02:37 | INFO     | __main__:run_web_server:131 - Web服务器启动中...
+2025-10-14 11:04:03 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:04:03 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:04:03 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:04:03 | INFO     | __main__:__init__:32 - 测试模式初始化完成
+2025-10-14 11:04:03 | INFO     | __main__:run_interactive_test:137 - 开始交互式测试
+2025-10-14 11:04:16 | INFO     | __main__:test_verification:73 - 开始测试核销功能
+2025-10-14 11:04:16 | INFO     | __main__:test_verification:78 - 获取到 0 个未核销订单
+2025-10-14 11:04:16 | INFO     | __main__:test_verification:103 - 核销功能测试完成
+2025-10-14 11:04:23 | INFO     | __main__:setup_test_environment:36 - 开始设置测试环境
+2025-10-14 11:04:23 | INFO     | utils.test_data_generator:generate_all_test_data:163 - 开始生成所有测试数据
+2025-10-14 11:04:23 | INFO     | utils.test_data_generator:clear_test_data:136 - 开始清除测试数据
+2025-10-14 11:04:23 | INFO     | utils.test_data_generator:clear_test_data:155 - 测试数据清除完成
+2025-10-14 11:04:23 | INFO     | utils.test_data_generator:generate_test_products:60 - 开始生成 5 个测试商品
+2025-10-14 11:04:23 | INFO     | utils.test_data_generator:generate_test_products:84 - 成功生成 5 个测试商品
+2025-10-14 11:04:23 | INFO     | utils.test_data_generator:generate_test_orders:22 - 开始生成 10 个测试订单
+2025-10-14 11:04:23 | INFO     | utils.test_data_generator:generate_test_orders:54 - 成功生成 10 个测试订单
+2025-10-14 11:04:23 | INFO     | utils.test_data_generator:generate_test_verification_records:90 - 开始生成 5 个测试核销记录
+2025-10-14 11:04:23 | INFO     | utils.test_data_generator:generate_test_verification_records:125 - 成功生成 5 个测试核销记录
+2025-10-14 11:04:23 | INFO     | utils.test_data_generator:generate_all_test_data:177 - 所有测试数据生成完成
+2025-10-14 11:04:23 | INFO     | __main__:setup_test_environment:44 - 测试环境设置完成:
+2025-10-14 11:04:23 | INFO     | __main__:setup_test_environment:45 - - 生成了 5 个测试商品
+2025-10-14 11:04:23 | INFO     | __main__:setup_test_environment:46 - - 生成了 10 个测试订单
+2025-10-14 11:04:23 | INFO     | __main__:setup_test_environment:47 - - 生成了 5 个测试核销记录
+2025-10-14 11:04:31 | INFO     | __main__:test_order_monitoring:53 - 开始测试订单监控功能
+2025-10-14 11:04:31 | INFO     | core.order_manager:get_pending_orders:33 - 获取待处理订单: 2025-10-13 11:04:31 - 2025-10-14 11:04:31
+2025-10-14 11:04:31 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.list.get, 参数: {'start_time': '2025-10-13 11:04:31', 'end_time': '2025-10-14 11:04:31', 'order_status': 1, 'page_size': 100}
+2025-10-14 11:04:31 | INFO     | core.order_manager:get_pending_orders:44 - 获取到 2 个待处理订单
+2025-10-14 11:04:31 | INFO     | __main__:test_order_monitoring:58 - 获取到 2 个待处理订单
+2025-10-14 11:04:31 | INFO     | core.order_manager:process_order:60 - 开始处理订单: TEST202510140008
+2025-10-14 11:04:31 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.detail.get, 参数: {'order_sn': 'TEST202510140008'}
+2025-10-14 11:04:31 | INFO     | core.order_manager:_save_order_to_db:113 - 订单 TEST202510140008 已存在，更新信息
+2025-10-14 11:04:31 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.goods.send, 参数: {'order_sn': 'TEST202510140008', 'goods_info': {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': 'K29EONA5ZRTNNKLD', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:04:31'}}
+2025-10-14 11:04:31 | INFO     | core.mock_api_client:_mock_send_order_goods:187 - [模拟API] 订单 TEST202510140008 发货成功
+2025-10-14 11:04:31 | INFO     | core.order_manager:_auto_ship_order:157 - 订单 TEST202510140008 自动发货成功
+2025-10-14 11:04:31 | INFO     | core.order_manager:process_order:84 - 订单 TEST202510140008 处理成功
+2025-10-14 11:04:31 | INFO     | core.order_manager:process_order:60 - 开始处理订单: TEST202510140009
+2025-10-14 11:04:31 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.detail.get, 参数: {'order_sn': 'TEST202510140009'}
+2025-10-14 11:04:31 | INFO     | core.order_manager:_save_order_to_db:113 - 订单 TEST202510140009 已存在，更新信息
+2025-10-14 11:04:31 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.goods.send, 参数: {'order_sn': 'TEST202510140009', 'goods_info': {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': '8S7G8C5ENAO1RZ1F', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:04:31'}}
+2025-10-14 11:04:32 | INFO     | core.mock_api_client:_mock_send_order_goods:187 - [模拟API] 订单 TEST202510140009 发货成功
+2025-10-14 11:04:32 | INFO     | core.order_manager:_auto_ship_order:157 - 订单 TEST202510140009 自动发货成功
+2025-10-14 11:04:32 | INFO     | core.order_manager:process_order:84 - 订单 TEST202510140009 处理成功
+2025-10-14 11:04:32 | INFO     | __main__:test_order_monitoring:66 - 订单监控测试完成，成功处理 2/2 个订单
+2025-10-14 11:04:36 | INFO     | __main__:test_verification:73 - 开始测试核销功能
+2025-10-14 11:04:36 | INFO     | __main__:test_verification:78 - 获取到 6 个未核销订单
+2025-10-14 11:04:36 | INFO     | __main__:test_verification:85 - 测试核销订单: TEST202510140002
+2025-10-14 11:04:36 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140002, 核销码: GYJAPWYV06GA68CR
+2025-10-14 11:04:36 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140002', 'verification_code': 'GYJAPWYV06GA68CR'}
+2025-10-14 11:04:36 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:250 - [模拟API] 订单 TEST202510140002 核销失败
+2025-10-14 11:04:36 | ERROR    | core.verification:verify_order:68 - 订单 TEST202510140002 核销失败
+2025-10-14 11:04:36 | INFO     | __main__:test_verification:87 - 核销结果: {'success': False, 'message': '核销失败', 'order_sn': 'TEST202510140002'}
+2025-10-14 11:04:36 | INFO     | __main__:test_verification:99 - 测试批量核销 3 个订单
+2025-10-14 11:04:36 | INFO     | core.verification:batch_verify_orders:89 - 开始批量核销，共 3 个订单
+2025-10-14 11:04:36 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140002, 核销码: GYJAPWYV06GA68CR
+2025-10-14 11:04:36 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140002', 'verification_code': 'GYJAPWYV06GA68CR'}
+2025-10-14 11:04:37 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140002 核销成功
+2025-10-14 11:04:37 | INFO     | core.verification:verify_order:56 - 订单 TEST202510140002 核销成功
+2025-10-14 11:04:37 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140005, 核销码: YXCSRX6UCXSKUFWQ
+2025-10-14 11:04:37 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140005', 'verification_code': 'YXCSRX6UCXSKUFWQ'}
+2025-10-14 11:04:37 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140005 核销成功
+2025-10-14 11:04:37 | INFO     | core.verification:verify_order:56 - 订单 TEST202510140005 核销成功
+2025-10-14 11:04:37 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140006, 核销码: 8C31P6MLWPUOR3RH
+2025-10-14 11:04:37 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140006', 'verification_code': '8C31P6MLWPUOR3RH'}
+2025-10-14 11:04:37 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140006 核销成功
+2025-10-14 11:04:37 | INFO     | core.verification:verify_order:56 - 订单 TEST202510140006 核销成功
+2025-10-14 11:04:37 | INFO     | core.verification:batch_verify_orders:114 - 批量核销完成，成功: 3, 失败: 0
+2025-10-14 11:04:37 | INFO     | __main__:test_verification:101 - 批量核销结果: {'total': 3, 'success': 3, 'failed': 0, 'results': [{'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140002', 'verification_time': '2025-10-14T11:04:37.029916'}, {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140005', 'verification_time': '2025-10-14T11:04:37.158538'}, {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140006', 'verification_time': '2025-10-14T11:04:37.584870'}]}
+2025-10-14 11:04:37 | INFO     | __main__:test_verification:103 - 核销功能测试完成
+2025-10-14 11:04:57 | INFO     | __main__:test_order_monitoring:53 - 开始测试订单监控功能
+2025-10-14 11:04:57 | INFO     | core.order_manager:get_pending_orders:33 - 获取待处理订单: 2025-10-13 11:04:57 - 2025-10-14 11:04:57
+2025-10-14 11:04:57 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.list.get, 参数: {'start_time': '2025-10-13 11:04:57', 'end_time': '2025-10-14 11:04:57', 'order_status': 1, 'page_size': 100}
+2025-10-14 11:04:58 | INFO     | core.order_manager:get_pending_orders:44 - 获取到 0 个待处理订单
+2025-10-14 11:04:58 | INFO     | __main__:test_order_monitoring:58 - 获取到 0 个待处理订单
+2025-10-14 11:04:58 | INFO     | __main__:test_order_monitoring:66 - 订单监控测试完成，成功处理 0/0 个订单
+2025-10-14 11:05:06 | INFO     | __main__:test_verification:73 - 开始测试核销功能
+2025-10-14 11:05:06 | INFO     | __main__:test_verification:78 - 获取到 3 个未核销订单
+2025-10-14 11:05:06 | INFO     | __main__:test_verification:85 - 测试核销订单: TEST202510140007
+2025-10-14 11:05:06 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140007, 核销码: UGDI5B6IG2OR088A
+2025-10-14 11:05:06 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140007', 'verification_code': 'UGDI5B6IG2OR088A'}
+2025-10-14 11:05:06 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140007 核销成功
+2025-10-14 11:05:06 | INFO     | core.verification:verify_order:56 - 订单 TEST202510140007 核销成功
+2025-10-14 11:05:06 | INFO     | __main__:test_verification:87 - 核销结果: {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140007', 'verification_time': '2025-10-14T11:05:06.544606'}
+2025-10-14 11:05:06 | INFO     | __main__:test_verification:99 - 测试批量核销 3 个订单
+2025-10-14 11:05:06 | INFO     | core.verification:batch_verify_orders:89 - 开始批量核销，共 3 个订单
+2025-10-14 11:05:06 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140007, 核销码: UGDI5B6IG2OR088A
+2025-10-14 11:05:06 | ERROR    | core.verification:verify_order:77 - 核销验证失败: 订单 TEST202510140007 状态不正确，无法核销
+2025-10-14 11:05:06 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140008, 核销码: ULUQRSKLIH16AQ7S
+2025-10-14 11:05:06 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140008', 'verification_code': 'ULUQRSKLIH16AQ7S'}
+2025-10-14 11:05:06 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140008 核销成功
+2025-10-14 11:05:06 | INFO     | core.verification:verify_order:56 - 订单 TEST202510140008 核销成功
+2025-10-14 11:05:06 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140009, 核销码: P4R8DRA9TYJ3M9QT
+2025-10-14 11:05:06 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140009', 'verification_code': 'P4R8DRA9TYJ3M9QT'}
+2025-10-14 11:05:07 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:250 - [模拟API] 订单 TEST202510140009 核销失败
+2025-10-14 11:05:07 | ERROR    | core.verification:verify_order:68 - 订单 TEST202510140009 核销失败
+2025-10-14 11:05:07 | INFO     | core.verification:batch_verify_orders:114 - 批量核销完成，成功: 1, 失败: 2
+2025-10-14 11:05:07 | INFO     | __main__:test_verification:101 - 批量核销结果: {'total': 3, 'success': 1, 'failed': 2, 'results': [{'success': False, 'message': '订单 TEST202510140007 状态不正确，无法核销', 'order_sn': 'TEST202510140007'}, {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140008', 'verification_time': '2025-10-14T11:05:06.891251'}, {'success': False, 'message': '核销失败', 'order_sn': 'TEST202510140009'}]}
+2025-10-14 11:05:07 | INFO     | __main__:test_verification:103 - 核销功能测试完成
+2025-10-14 11:05:29 | INFO     | __main__:test_api_client:110 - 开始测试API客户端功能
+2025-10-14 11:05:29 | INFO     | __main__:test_api_client:116 - 测试获取订单列表
+2025-10-14 11:05:29 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.list.get, 参数: {'page': 1, 'page_size': 5}
+2025-10-14 11:05:29 | INFO     | __main__:test_api_client:118 - 订单列表: {'order_list_get_response': {'order_list': [{'order_sn': 'TEST202510140000', 'buyer_id': 'buyer_0000', 'buyer_name': '测试买家0', 'order_status': 0, 'pay_time': '2025-10-13 11:04:03', 'order_amount': 41.9, 'goods_list': [{'goods_id': 'goods_0', 'goods_name': '测试虚拟商品0', 'goods_type': 1, 'quantity': 1, 'price': 72.1}], 'created_at': '2025-10-13 11:04:03'}, {'order_sn': 'TEST202510140001', 'buyer_id': 'buyer_0001', 'buyer_name': '测试买家1', 'order_status': 2, 'pay_time': '2025-10-13 11:34:03', 'order_amount': 25.58, 'goods_list': [{'goods_id': 'goods_1', 'goods_name': '测试虚拟商品1', 'goods_type': 2, 'quantity': 1, 'price': 65.87}], 'created_at': '2025-10-13 11:34:03'}, {'order_sn': 'TEST202510140002', 'buyer_id': 'buyer_0002', 'buyer_name': '测试买家2', 'order_status': 2, 'pay_time': '2025-10-13 12:04:03', 'order_amount': 12.96, 'goods_list': [{'goods_id': 'goods_2', 'goods_name': '测试虚拟商品2', 'goods_type': 2, 'quantity': 1, 'price': 35.05}], 'created_at': '2025-10-13 12:04:03'}, {'order_sn': 'TEST202510140003', 'buyer_id': 'buyer_0003', 'buyer_name': '测试买家3', 'order_status': 0, 'pay_time': '2025-10-13 12:34:03', 'order_amount': 24.48, 'goods_list': [{'goods_id': 'goods_3', 'goods_name': '测试虚拟商品3', 'goods_type': 3, 'quantity': 1, 'price': 95.67}], 'created_at': '2025-10-13 12:34:03'}, {'order_sn': 'TEST202510140004', 'buyer_id': 'buyer_0004', 'buyer_name': '测试买家4', 'order_status': 0, 'pay_time': '2025-10-13 13:04:03', 'order_amount': 73.87, 'goods_list': [{'goods_id': 'goods_4', 'goods_name': '测试虚拟商品4', 'goods_type': 2, 'quantity': 1, 'price': 80.56}], 'created_at': '2025-10-13 13:04:03'}], 'total_count': 10, 'page': 1, 'page_size': 5}}
+2025-10-14 11:05:29 | INFO     | __main__:test_api_client:121 - 测试获取商品列表
+2025-10-14 11:05:29 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.goods.list.get, 参数: {'page': 1, 'page_size': 5}
+2025-10-14 11:05:29 | INFO     | __main__:test_api_client:123 - 商品列表: {'goods_list_get_response': {'goods_list': [{'goods_id': 'goods_0', 'goods_name': '测试虚拟商品0', 'goods_type': 3, 'goods_status': 1, 'price': 57.33, 'stock': 595, 'description': '这是测试虚拟商品0的描述'}, {'goods_id': 'goods_1', 'goods_name': '测试虚拟商品1', 'goods_type': 1, 'goods_status': 1, 'price': 54.48, 'stock': 185, 'description': '这是测试虚拟商品1的描述'}, {'goods_id': 'goods_2', 'goods_name': '测试虚拟商品2', 'goods_type': 3, 'goods_status': 1, 'price': 79.65, 'stock': 717, 'description': '这是测试虚拟商品2的描述'}, {'goods_id': 'goods_3', 'goods_name': '测试虚拟商品3', 'goods_type': 1, 'goods_status': 1, 'price': 57.43, 'stock': 348, 'description': '这是测试虚拟商品3的描述'}, {'goods_id': 'goods_4', 'goods_name': '测试虚拟商品4', 'goods_type': 2, 'goods_status': 1, 'price': 84.27, 'stock': 132, 'description': '这是测试虚拟商品4的描述'}], 'total_count': 5, 'page': 1, 'page_size': 5}}
+2025-10-14 11:05:29 | INFO     | __main__:test_api_client:126 - 测试获取核销记录
+2025-10-14 11:05:29 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.verification.record.get, 参数: {'page': 1, 'page_size': 5}
+2025-10-14 11:05:30 | INFO     | __main__:test_api_client:128 - 核销记录: {'verification_record_get_response': {'records': [], 'total_count': 0, 'page': 1, 'page_size': 5}}
+2025-10-14 11:05:30 | INFO     | __main__:test_api_client:130 - API客户端功能测试完成
+2025-10-14 11:05:38 | INFO     | __main__:run_full_test:177 - 开始运行完整测试
+2025-10-14 11:05:38 | INFO     | __main__:setup_test_environment:36 - 开始设置测试环境
+2025-10-14 11:05:38 | INFO     | utils.test_data_generator:generate_all_test_data:163 - 开始生成所有测试数据
+2025-10-14 11:05:38 | INFO     | utils.test_data_generator:clear_test_data:136 - 开始清除测试数据
+2025-10-14 11:05:38 | INFO     | utils.test_data_generator:clear_test_data:155 - 测试数据清除完成
+2025-10-14 11:05:38 | INFO     | utils.test_data_generator:generate_test_products:60 - 开始生成 5 个测试商品
+2025-10-14 11:05:38 | INFO     | utils.test_data_generator:generate_test_products:84 - 成功生成 5 个测试商品
+2025-10-14 11:05:38 | INFO     | utils.test_data_generator:generate_test_orders:22 - 开始生成 10 个测试订单
+2025-10-14 11:05:38 | INFO     | utils.test_data_generator:generate_test_orders:54 - 成功生成 10 个测试订单
+2025-10-14 11:05:38 | INFO     | utils.test_data_generator:generate_test_verification_records:90 - 开始生成 5 个测试核销记录
+2025-10-14 11:05:38 | INFO     | utils.test_data_generator:generate_test_verification_records:125 - 成功生成 5 个测试核销记录
+2025-10-14 11:05:38 | INFO     | utils.test_data_generator:generate_all_test_data:177 - 所有测试数据生成完成
+2025-10-14 11:05:38 | INFO     | __main__:setup_test_environment:44 - 测试环境设置完成:
+2025-10-14 11:05:38 | INFO     | __main__:setup_test_environment:45 - - 生成了 5 个测试商品
+2025-10-14 11:05:38 | INFO     | __main__:setup_test_environment:46 - - 生成了 10 个测试订单
+2025-10-14 11:05:38 | INFO     | __main__:setup_test_environment:47 - - 生成了 5 个测试核销记录
+2025-10-14 11:05:40 | INFO     | __main__:test_api_client:110 - 开始测试API客户端功能
+2025-10-14 11:05:40 | INFO     | __main__:test_api_client:116 - 测试获取订单列表
+2025-10-14 11:05:40 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.list.get, 参数: {'page': 1, 'page_size': 5}
+2025-10-14 11:05:40 | INFO     | __main__:test_api_client:118 - 订单列表: {'order_list_get_response': {'order_list': [{'order_sn': 'TEST202510140000', 'buyer_id': 'buyer_0000', 'buyer_name': '测试买家0', 'order_status': 0, 'pay_time': '2025-10-13 11:04:03', 'order_amount': 41.9, 'goods_list': [{'goods_id': 'goods_0', 'goods_name': '测试虚拟商品0', 'goods_type': 1, 'quantity': 1, 'price': 72.1}], 'created_at': '2025-10-13 11:04:03'}, {'order_sn': 'TEST202510140001', 'buyer_id': 'buyer_0001', 'buyer_name': '测试买家1', 'order_status': 2, 'pay_time': '2025-10-13 11:34:03', 'order_amount': 25.58, 'goods_list': [{'goods_id': 'goods_1', 'goods_name': '测试虚拟商品1', 'goods_type': 2, 'quantity': 1, 'price': 65.87}], 'created_at': '2025-10-13 11:34:03'}, {'order_sn': 'TEST202510140002', 'buyer_id': 'buyer_0002', 'buyer_name': '测试买家2', 'order_status': 2, 'pay_time': '2025-10-13 12:04:03', 'order_amount': 12.96, 'goods_list': [{'goods_id': 'goods_2', 'goods_name': '测试虚拟商品2', 'goods_type': 2, 'quantity': 1, 'price': 35.05}], 'created_at': '2025-10-13 12:04:03'}, {'order_sn': 'TEST202510140003', 'buyer_id': 'buyer_0003', 'buyer_name': '测试买家3', 'order_status': 0, 'pay_time': '2025-10-13 12:34:03', 'order_amount': 24.48, 'goods_list': [{'goods_id': 'goods_3', 'goods_name': '测试虚拟商品3', 'goods_type': 3, 'quantity': 1, 'price': 95.67}], 'created_at': '2025-10-13 12:34:03'}, {'order_sn': 'TEST202510140004', 'buyer_id': 'buyer_0004', 'buyer_name': '测试买家4', 'order_status': 0, 'pay_time': '2025-10-13 13:04:03', 'order_amount': 73.87, 'goods_list': [{'goods_id': 'goods_4', 'goods_name': '测试虚拟商品4', 'goods_type': 2, 'quantity': 1, 'price': 80.56}], 'created_at': '2025-10-13 13:04:03'}], 'total_count': 10, 'page': 1, 'page_size': 5}}
+2025-10-14 11:05:40 | INFO     | __main__:test_api_client:121 - 测试获取商品列表
+2025-10-14 11:05:40 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.goods.list.get, 参数: {'page': 1, 'page_size': 5}
+2025-10-14 11:05:41 | INFO     | __main__:test_api_client:123 - 商品列表: {'goods_list_get_response': {'goods_list': [{'goods_id': 'goods_0', 'goods_name': '测试虚拟商品0', 'goods_type': 3, 'goods_status': 1, 'price': 57.33, 'stock': 595, 'description': '这是测试虚拟商品0的描述'}, {'goods_id': 'goods_1', 'goods_name': '测试虚拟商品1', 'goods_type': 1, 'goods_status': 1, 'price': 54.48, 'stock': 185, 'description': '这是测试虚拟商品1的描述'}, {'goods_id': 'goods_2', 'goods_name': '测试虚拟商品2', 'goods_type': 3, 'goods_status': 1, 'price': 79.65, 'stock': 717, 'description': '这是测试虚拟商品2的描述'}, {'goods_id': 'goods_3', 'goods_name': '测试虚拟商品3', 'goods_type': 1, 'goods_status': 1, 'price': 57.43, 'stock': 348, 'description': '这是测试虚拟商品3的描述'}, {'goods_id': 'goods_4', 'goods_name': '测试虚拟商品4', 'goods_type': 2, 'goods_status': 1, 'price': 84.27, 'stock': 132, 'description': '这是测试虚拟商品4的描述'}], 'total_count': 5, 'page': 1, 'page_size': 5}}
+2025-10-14 11:05:41 | INFO     | __main__:test_api_client:126 - 测试获取核销记录
+2025-10-14 11:05:41 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.verification.record.get, 参数: {'page': 1, 'page_size': 5}
+2025-10-14 11:05:41 | INFO     | __main__:test_api_client:128 - 核销记录: {'verification_record_get_response': {'records': [], 'total_count': 0, 'page': 1, 'page_size': 5}}
+2025-10-14 11:05:41 | INFO     | __main__:test_api_client:130 - API客户端功能测试完成
+2025-10-14 11:05:41 | INFO     | __main__:test_order_monitoring:53 - 开始测试订单监控功能
+2025-10-14 11:05:41 | INFO     | core.order_manager:get_pending_orders:33 - 获取待处理订单: 2025-10-13 11:05:41 - 2025-10-14 11:05:41
+2025-10-14 11:05:41 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.list.get, 参数: {'start_time': '2025-10-13 11:05:41', 'end_time': '2025-10-14 11:05:41', 'order_status': 1, 'page_size': 100}
+2025-10-14 11:05:41 | INFO     | core.order_manager:get_pending_orders:44 - 获取到 0 个待处理订单
+2025-10-14 11:05:41 | INFO     | __main__:test_order_monitoring:58 - 获取到 0 个待处理订单
+2025-10-14 11:05:41 | INFO     | __main__:test_order_monitoring:66 - 订单监控测试完成，成功处理 0/0 个订单
+2025-10-14 11:05:41 | INFO     | __main__:test_verification:73 - 开始测试核销功能
+2025-10-14 11:05:41 | INFO     | __main__:test_verification:78 - 获取到 2 个未核销订单
+2025-10-14 11:05:41 | INFO     | __main__:test_verification:85 - 测试核销订单: TEST202510140002
+2025-10-14 11:05:41 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140002, 核销码: 7MJMUTJ5TA1LB89X
+2025-10-14 11:05:41 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140002', 'verification_code': '7MJMUTJ5TA1LB89X'}
+2025-10-14 11:05:41 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140002 核销成功
+2025-10-14 11:05:42 | INFO     | core.verification:verify_order:56 - 订单 TEST202510140002 核销成功
+2025-10-14 11:05:42 | INFO     | __main__:test_verification:87 - 核销结果: {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140002', 'verification_time': '2025-10-14T11:05:42.009264'}
+2025-10-14 11:05:42 | INFO     | __main__:test_verification:99 - 测试批量核销 2 个订单
+2025-10-14 11:05:42 | INFO     | core.verification:batch_verify_orders:89 - 开始批量核销，共 2 个订单
+2025-10-14 11:05:42 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140002, 核销码: 7MJMUTJ5TA1LB89X
+2025-10-14 11:05:42 | ERROR    | core.verification:verify_order:77 - 核销验证失败: 订单 TEST202510140002 状态不正确，无法核销
+2025-10-14 11:05:42 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140008, 核销码: AF631KHTBN9T0R71
+2025-10-14 11:05:42 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140008', 'verification_code': 'AF631KHTBN9T0R71'}
+2025-10-14 11:05:42 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140008 核销成功
+2025-10-14 11:05:42 | INFO     | core.verification:verify_order:56 - 订单 TEST202510140008 核销成功
+2025-10-14 11:05:42 | INFO     | core.verification:batch_verify_orders:114 - 批量核销完成，成功: 1, 失败: 1
+2025-10-14 11:05:42 | INFO     | __main__:test_verification:101 - 批量核销结果: {'total': 2, 'success': 1, 'failed': 1, 'results': [{'success': False, 'message': '订单 TEST202510140002 状态不正确，无法核销', 'order_sn': 'TEST202510140002'}, {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140008', 'verification_time': '2025-10-14T11:05:42.282678'}]}
+2025-10-14 11:05:42 | INFO     | __main__:test_verification:103 - 核销功能测试完成
+2025-10-14 11:05:42 | INFO     | __main__:run_full_test:195 - 完整测试运行完成
+2025-10-14 11:06:02 | INFO     | utils.test_data_generator:clear_test_data:136 - 开始清除测试数据
+2025-10-14 11:06:02 | INFO     | utils.test_data_generator:clear_test_data:155 - 测试数据清除完成
+2025-10-14 11:06:02 | INFO     | __main__:run_interactive_test:166 - 测试数据已清除
+2025-10-14 11:06:07 | INFO     | __main__:run_interactive_test:168 - 退出测试模式
+2025-10-14 11:06:07 | INFO     | __main__:cleanup:204 - 测试模式清理完成
+2025-10-14 11:22:16 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:22:16 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:22:16 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:22:16 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:22:16 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:22:16 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:22:16 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:22:16 | ERROR    | __main__:run_web_server:95 - Web服务器启动失败: jinja2 must be installed to use Jinja2Templates
+2025-10-14 11:23:17 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:23:17 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:23:17 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:23:17 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:23:17 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:23:17 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:23:17 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:23:17 | ERROR    | __main__:run_web_server:95 - Web服务器启动失败: jinja2 must be installed to use Jinja2Templates
+2025-10-14 11:32:19 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:32:19 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:32:19 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:32:19 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:32:19 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:32:19 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:32:19 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:32:19 | ERROR    | __main__:run_web_server:95 - Web服务器启动失败: jinja2 must be installed to use Jinja2Templates
+2025-10-14 11:32:53 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:32:53 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:32:53 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:32:53 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:32:53 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:32:53 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:32:53 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:32:53 | ERROR    | __main__:run_web_server:95 - Web服务器启动失败: jinja2 must be installed to use Jinja2Templates
+2025-10-14 11:33:34 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:33:34 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:33:34 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:33:34 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:33:34 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:33:34 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:33:34 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:33:34 | ERROR    | __main__:run_web_server:95 - Web服务器启动失败: jinja2 must be installed to use Jinja2Templates
+2025-10-14 11:34:39 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:34:39 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:34:39 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:34:39 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:34:39 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:34:39 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:34:39 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:34:39 | ERROR    | __main__:run_web_server:95 - Web服务器启动失败: jinja2 must be installed to use Jinja2Templates
+2025-10-14 11:35:01 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:35:01 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:35:01 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:35:01 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:35:01 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:35:01 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:35:01 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:35:01 | ERROR    | __main__:run_web_server:95 - Web服务器启动失败: jinja2 must be installed to use Jinja2Templates
+2025-10-14 11:35:44 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:35:44 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:35:44 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:35:44 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:35:44 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:35:44 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:35:44 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:35:44 | ERROR    | __main__:run_web_server:95 - Web服务器启动失败: Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2025-10-14 11:36:16 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:36:16 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:36:16 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:36:16 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:36:16 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:36:16 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:36:16 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:36:16 | ERROR    | __main__:run_web_server:95 - Web服务器启动失败: Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2025-10-14 11:37:09 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:37:09 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:37:09 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:37:09 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:37:09 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:37:09 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:37:09 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:37:09 | ERROR    | __main__:run_web_server:95 - Web服务器启动失败: Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2025-10-14 11:37:31 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:37:31 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:37:31 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:37:31 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:37:31 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:37:31 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:37:31 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:37:31 | ERROR    | __main__:run_web_server:95 - Web服务器启动失败: Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2025-10-14 11:37:57 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:37:57 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:37:57 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:37:57 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:37:57 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:37:57 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:37:57 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:37:57 | INFO     | __main__:run_web_server:90 - Web服务器启动中...
+2025-10-14 11:38:32 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:38:32 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:38:32 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:38:32 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:38:33 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:38:33 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:38:33 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:38:33 | INFO     | __main__:run_web_server:90 - Web服务器启动中...
+2025-10-14 11:41:03 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:41:03 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:41:03 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:41:03 | INFO     | __main__:__init__:32 - 测试模式初始化完成
+2025-10-14 11:41:03 | INFO     | __main__:run_interactive_test:137 - 开始交互式测试
+2025-10-14 11:41:12 | INFO     | __main__:setup_test_environment:36 - 开始设置测试环境
+2025-10-14 11:41:12 | INFO     | utils.test_data_generator:generate_all_test_data:163 - 开始生成所有测试数据
+2025-10-14 11:41:12 | INFO     | utils.test_data_generator:clear_test_data:136 - 开始清除测试数据
+2025-10-14 11:41:12 | INFO     | utils.test_data_generator:clear_test_data:155 - 测试数据清除完成
+2025-10-14 11:41:12 | INFO     | utils.test_data_generator:generate_test_products:60 - 开始生成 5 个测试商品
+2025-10-14 11:41:12 | INFO     | utils.test_data_generator:generate_test_products:84 - 成功生成 5 个测试商品
+2025-10-14 11:41:12 | INFO     | utils.test_data_generator:generate_test_orders:22 - 开始生成 10 个测试订单
+2025-10-14 11:41:12 | INFO     | utils.test_data_generator:generate_test_orders:54 - 成功生成 10 个测试订单
+2025-10-14 11:41:12 | INFO     | utils.test_data_generator:generate_test_verification_records:90 - 开始生成 5 个测试核销记录
+2025-10-14 11:41:12 | INFO     | utils.test_data_generator:generate_test_verification_records:125 - 成功生成 5 个测试核销记录
+2025-10-14 11:41:12 | INFO     | utils.test_data_generator:generate_all_test_data:177 - 所有测试数据生成完成
+2025-10-14 11:41:12 | INFO     | __main__:setup_test_environment:44 - 测试环境设置完成:
+2025-10-14 11:41:12 | INFO     | __main__:setup_test_environment:45 - - 生成了 5 个测试商品
+2025-10-14 11:41:12 | INFO     | __main__:setup_test_environment:46 - - 生成了 10 个测试订单
+2025-10-14 11:41:12 | INFO     | __main__:setup_test_environment:47 - - 生成了 5 个测试核销记录
+2025-10-14 11:46:15 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:46:15 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:46:15 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:46:15 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:46:15 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:46:15 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:46:15 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:46:15 | INFO     | __main__:run_web_server:90 - Web服务器启动中...
+2025-10-14 11:47:46 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:47:46 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:47:46 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:47:46 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 11:47:47 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:47:47 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:47:47 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:47:47 | INFO     | __main__:run_web_server:90 - Web服务器启动中...
+2025-10-14 11:49:17 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 11:49:17 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:49:17 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 11:49:17 | INFO     | __main__:__init__:32 - 测试模式初始化完成
+2025-10-14 11:49:17 | INFO     | __main__:run_interactive_test:137 - 开始交互式测试
+2025-10-14 11:49:22 | INFO     | __main__:test_order_monitoring:53 - 开始测试订单监控功能
+2025-10-14 11:49:22 | INFO     | core.order_manager:get_pending_orders:33 - 获取待处理订单: 2025-10-13 11:49:22 - 2025-10-14 11:49:22
+2025-10-14 11:49:22 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.list.get, 参数: {'start_time': '2025-10-13 11:49:22', 'end_time': '2025-10-14 11:49:22', 'order_status': 1, 'page_size': 100}
+2025-10-14 11:49:23 | INFO     | core.order_manager:get_pending_orders:44 - 获取到 7 个待处理订单
+2025-10-14 11:49:23 | INFO     | __main__:test_order_monitoring:58 - 获取到 7 个待处理订单
+2025-10-14 11:49:23 | INFO     | core.order_manager:process_order:60 - 开始处理订单: TEST202510140001
+2025-10-14 11:49:23 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.detail.get, 参数: {'order_sn': 'TEST202510140001'}
+2025-10-14 11:49:23 | INFO     | core.order_manager:_save_order_to_db:113 - 订单 TEST202510140001 已存在，更新信息
+2025-10-14 11:49:23 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.goods.send, 参数: {'order_sn': 'TEST202510140001', 'goods_info': {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': 'RDEAPAHDCTLNLZIZ', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:49:23'}}
+2025-10-14 11:49:23 | INFO     | core.mock_api_client:_mock_send_order_goods:187 - [模拟API] 订单 TEST202510140001 发货成功
+2025-10-14 11:49:23 | INFO     | core.order_manager:_auto_ship_order:157 - 订单 TEST202510140001 自动发货成功
+2025-10-14 11:49:23 | INFO     | core.order_manager:process_order:84 - 订单 TEST202510140001 处理成功
+2025-10-14 11:49:23 | INFO     | core.order_manager:process_order:60 - 开始处理订单: TEST202510140003
+2025-10-14 11:49:23 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.detail.get, 参数: {'order_sn': 'TEST202510140003'}
+2025-10-14 11:49:24 | INFO     | core.order_manager:_save_order_to_db:113 - 订单 TEST202510140003 已存在，更新信息
+2025-10-14 11:49:24 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.goods.send, 参数: {'order_sn': 'TEST202510140003', 'goods_info': {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': 'ZQY3UN3M6E2WT61K', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:49:24'}}
+2025-10-14 11:49:24 | INFO     | core.mock_api_client:_mock_send_order_goods:187 - [模拟API] 订单 TEST202510140003 发货成功
+2025-10-14 11:49:24 | INFO     | core.order_manager:_auto_ship_order:157 - 订单 TEST202510140003 自动发货成功
+2025-10-14 11:49:24 | INFO     | core.order_manager:process_order:84 - 订单 TEST202510140003 处理成功
+2025-10-14 11:49:24 | INFO     | core.order_manager:process_order:60 - 开始处理订单: TEST202510140004
+2025-10-14 11:49:24 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.detail.get, 参数: {'order_sn': 'TEST202510140004'}
+2025-10-14 11:49:25 | INFO     | core.order_manager:_save_order_to_db:113 - 订单 TEST202510140004 已存在，更新信息
+2025-10-14 11:49:25 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.goods.send, 参数: {'order_sn': 'TEST202510140004', 'goods_info': {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': 'OG022XPSWB7QPYAQ', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:49:25'}}
+2025-10-14 11:49:25 | INFO     | core.mock_api_client:_mock_send_order_goods:187 - [模拟API] 订单 TEST202510140004 发货成功
+2025-10-14 11:49:25 | INFO     | core.order_manager:_auto_ship_order:157 - 订单 TEST202510140004 自动发货成功
+2025-10-14 11:49:25 | INFO     | core.order_manager:process_order:84 - 订单 TEST202510140004 处理成功
+2025-10-14 11:49:25 | INFO     | core.order_manager:process_order:60 - 开始处理订单: TEST202510140006
+2025-10-14 11:49:25 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.detail.get, 参数: {'order_sn': 'TEST202510140006'}
+2025-10-14 11:49:25 | INFO     | core.order_manager:_save_order_to_db:113 - 订单 TEST202510140006 已存在，更新信息
+2025-10-14 11:49:25 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.goods.send, 参数: {'order_sn': 'TEST202510140006', 'goods_info': {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': 'GM6A9A6V1JDMUU1T', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:49:25'}}
+2025-10-14 11:49:26 | INFO     | core.mock_api_client:_mock_send_order_goods:187 - [模拟API] 订单 TEST202510140006 发货成功
+2025-10-14 11:49:26 | INFO     | core.order_manager:_auto_ship_order:157 - 订单 TEST202510140006 自动发货成功
+2025-10-14 11:49:26 | INFO     | core.order_manager:process_order:84 - 订单 TEST202510140006 处理成功
+2025-10-14 11:49:26 | INFO     | core.order_manager:process_order:60 - 开始处理订单: TEST202510140007
+2025-10-14 11:49:26 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.detail.get, 参数: {'order_sn': 'TEST202510140007'}
+2025-10-14 11:49:26 | INFO     | core.order_manager:_save_order_to_db:113 - 订单 TEST202510140007 已存在，更新信息
+2025-10-14 11:49:26 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.goods.send, 参数: {'order_sn': 'TEST202510140007', 'goods_info': {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': '2OO75X4L0LYPSJJA', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:49:26'}}
+2025-10-14 11:49:26 | INFO     | core.mock_api_client:_mock_send_order_goods:187 - [模拟API] 订单 TEST202510140007 发货成功
+2025-10-14 11:49:26 | INFO     | core.order_manager:_auto_ship_order:157 - 订单 TEST202510140007 自动发货成功
+2025-10-14 11:49:26 | INFO     | core.order_manager:process_order:84 - 订单 TEST202510140007 处理成功
+2025-10-14 11:49:26 | INFO     | core.order_manager:process_order:60 - 开始处理订单: TEST202510140008
+2025-10-14 11:49:26 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.detail.get, 参数: {'order_sn': 'TEST202510140008'}
+2025-10-14 11:49:26 | INFO     | core.order_manager:_save_order_to_db:113 - 订单 TEST202510140008 已存在，更新信息
+2025-10-14 11:49:26 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.goods.send, 参数: {'order_sn': 'TEST202510140008', 'goods_info': {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': 'IAERQK8M06GS83SN', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:49:26'}}
+2025-10-14 11:49:27 | INFO     | core.mock_api_client:_mock_send_order_goods:187 - [模拟API] 订单 TEST202510140008 发货成功
+2025-10-14 11:49:27 | INFO     | core.order_manager:_auto_ship_order:157 - 订单 TEST202510140008 自动发货成功
+2025-10-14 11:49:27 | INFO     | core.order_manager:process_order:84 - 订单 TEST202510140008 处理成功
+2025-10-14 11:49:27 | INFO     | core.order_manager:process_order:60 - 开始处理订单: TEST202510140009
+2025-10-14 11:49:27 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.detail.get, 参数: {'order_sn': 'TEST202510140009'}
+2025-10-14 11:49:27 | INFO     | core.order_manager:_save_order_to_db:113 - 订单 TEST202510140009 已存在，更新信息
+2025-10-14 11:49:27 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.goods.send, 参数: {'order_sn': 'TEST202510140009', 'goods_info': {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': 'S7S4Q4S0N30LBQ3D', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 11:49:27'}}
+2025-10-14 11:49:27 | INFO     | core.mock_api_client:_mock_send_order_goods:187 - [模拟API] 订单 TEST202510140009 发货成功
+2025-10-14 11:49:27 | INFO     | core.order_manager:_auto_ship_order:157 - 订单 TEST202510140009 自动发货成功
+2025-10-14 11:49:27 | INFO     | core.order_manager:process_order:84 - 订单 TEST202510140009 处理成功
+2025-10-14 11:49:27 | INFO     | __main__:test_order_monitoring:66 - 订单监控测试完成，成功处理 7/7 个订单
+2025-10-14 11:49:41 | INFO     | __main__:test_verification:73 - 开始测试核销功能
+2025-10-14 11:49:41 | INFO     | __main__:test_verification:78 - 获取到 4 个未核销订单
+2025-10-14 11:49:41 | INFO     | __main__:test_verification:85 - 测试核销订单: TEST202510140000
+2025-10-14 11:49:41 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140000, 核销码: J6MB22LHPBKEMWS2
+2025-10-14 11:49:41 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140000', 'verification_code': 'J6MB22LHPBKEMWS2'}
+2025-10-14 11:49:42 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140000 核销成功
+2025-10-14 11:49:42 | INFO     | core.verification:verify_order:56 - 订单 TEST202510140000 核销成功
+2025-10-14 11:49:42 | INFO     | __main__:test_verification:87 - 核销结果: {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140000', 'verification_time': '2025-10-14T11:49:42.377648'}
+2025-10-14 11:49:42 | INFO     | __main__:test_verification:99 - 测试批量核销 3 个订单
+2025-10-14 11:49:42 | INFO     | core.verification:batch_verify_orders:89 - 开始批量核销，共 3 个订单
+2025-10-14 11:49:42 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140000, 核销码: J6MB22LHPBKEMWS2
+2025-10-14 11:49:42 | ERROR    | core.verification:verify_order:77 - 核销验证失败: 订单 TEST202510140000 状态不正确，无法核销
+2025-10-14 11:49:42 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140004, 核销码: F6ACL81PWJ402BT9
+2025-10-14 11:49:42 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140004', 'verification_code': 'F6ACL81PWJ402BT9'}
+2025-10-14 11:49:42 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140004 核销成功
+2025-10-14 11:49:42 | INFO     | core.verification:verify_order:56 - 订单 TEST202510140004 核销成功
+2025-10-14 11:49:42 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140006, 核销码: ALX8GROQDRX3DSJN
+2025-10-14 11:49:42 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140006', 'verification_code': 'ALX8GROQDRX3DSJN'}
+2025-10-14 11:49:42 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140006 核销成功
+2025-10-14 11:49:42 | INFO     | core.verification:verify_order:56 - 订单 TEST202510140006 核销成功
+2025-10-14 11:49:42 | INFO     | core.verification:batch_verify_orders:114 - 批量核销完成，成功: 2, 失败: 1
+2025-10-14 11:49:42 | INFO     | __main__:test_verification:101 - 批量核销结果: {'total': 3, 'success': 2, 'failed': 1, 'results': [{'success': False, 'message': '订单 TEST202510140000 状态不正确，无法核销', 'order_sn': 'TEST202510140000'}, {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140004', 'verification_time': '2025-10-14T11:49:42.681480'}, {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140006', 'verification_time': '2025-10-14T11:49:42.994835'}]}
+2025-10-14 11:49:42 | INFO     | __main__:test_verification:103 - 核销功能测试完成
+2025-10-14 11:54:19 | INFO     | __main__:test_verification:73 - 开始测试核销功能
+2025-10-14 11:54:19 | INFO     | __main__:test_verification:78 - 获取到 1 个未核销订单
+2025-10-14 11:54:19 | INFO     | __main__:test_verification:85 - 测试核销订单: TEST202510140008
+2025-10-14 11:54:19 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140008, 核销码: U9P6FVODLWWBBJ14
+2025-10-14 11:54:19 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140008', 'verification_code': 'U9P6FVODLWWBBJ14'}
+2025-10-14 11:54:19 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:250 - [模拟API] 订单 TEST202510140008 核销失败
+2025-10-14 11:54:19 | ERROR    | core.verification:verify_order:68 - 订单 TEST202510140008 核销失败
+2025-10-14 11:54:19 | INFO     | __main__:test_verification:87 - 核销结果: {'success': False, 'message': '核销失败', 'order_sn': 'TEST202510140008'}
+2025-10-14 11:54:19 | INFO     | __main__:test_verification:103 - 核销功能测试完成
+2025-10-14 12:07:41 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 12:07:41 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 12:07:41 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 12:07:41 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 12:07:41 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 12:07:41 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 12:07:41 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 12:07:41 | INFO     | __main__:run_web_server:90 - Web服务器启动中...
+2025-10-14 12:08:23 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 12:08:23 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 12:08:23 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 12:08:23 | INFO     | __main__:__init__:32 - 测试模式初始化完成
+2025-10-14 12:08:23 | INFO     | __main__:run_interactive_test:137 - 开始交互式测试
+2025-10-14 12:08:26 | INFO     | __main__:setup_test_environment:36 - 开始设置测试环境
+2025-10-14 12:08:26 | INFO     | utils.test_data_generator:generate_all_test_data:163 - 开始生成所有测试数据
+2025-10-14 12:08:26 | INFO     | utils.test_data_generator:clear_test_data:136 - 开始清除测试数据
+2025-10-14 12:08:26 | INFO     | utils.test_data_generator:clear_test_data:155 - 测试数据清除完成
+2025-10-14 12:08:26 | INFO     | utils.test_data_generator:generate_test_products:60 - 开始生成 5 个测试商品
+2025-10-14 12:08:26 | INFO     | utils.test_data_generator:generate_test_products:84 - 成功生成 5 个测试商品
+2025-10-14 12:08:26 | INFO     | utils.test_data_generator:generate_test_orders:22 - 开始生成 10 个测试订单
+2025-10-14 12:08:26 | INFO     | utils.test_data_generator:generate_test_orders:54 - 成功生成 10 个测试订单
+2025-10-14 12:08:26 | INFO     | utils.test_data_generator:generate_test_verification_records:90 - 开始生成 5 个测试核销记录
+2025-10-14 12:08:26 | INFO     | utils.test_data_generator:generate_test_verification_records:125 - 成功生成 5 个测试核销记录
+2025-10-14 12:08:26 | INFO     | utils.test_data_generator:generate_all_test_data:177 - 所有测试数据生成完成
+2025-10-14 12:08:26 | INFO     | __main__:setup_test_environment:44 - 测试环境设置完成:
+2025-10-14 12:08:26 | INFO     | __main__:setup_test_environment:45 - - 生成了 5 个测试商品
+2025-10-14 12:08:26 | INFO     | __main__:setup_test_environment:46 - - 生成了 10 个测试订单
+2025-10-14 12:08:26 | INFO     | __main__:setup_test_environment:47 - - 生成了 5 个测试核销记录
+2025-10-14 12:09:23 | INFO     | utils.test_data_generator:clear_test_data:136 - 开始清除测试数据
+2025-10-14 12:09:23 | INFO     | utils.test_data_generator:clear_test_data:155 - 测试数据清除完成
+2025-10-14 12:09:23 | INFO     | __main__:run_interactive_test:166 - 测试数据已清除
+2025-10-14 12:09:38 | INFO     | __main__:setup_test_environment:36 - 开始设置测试环境
+2025-10-14 12:09:38 | INFO     | utils.test_data_generator:generate_all_test_data:163 - 开始生成所有测试数据
+2025-10-14 12:09:38 | INFO     | utils.test_data_generator:clear_test_data:136 - 开始清除测试数据
+2025-10-14 12:09:38 | INFO     | utils.test_data_generator:clear_test_data:155 - 测试数据清除完成
+2025-10-14 12:09:38 | INFO     | utils.test_data_generator:generate_test_products:60 - 开始生成 5 个测试商品
+2025-10-14 12:09:38 | INFO     | utils.test_data_generator:generate_test_products:84 - 成功生成 5 个测试商品
+2025-10-14 12:09:38 | INFO     | utils.test_data_generator:generate_test_orders:22 - 开始生成 10 个测试订单
+2025-10-14 12:09:38 | INFO     | utils.test_data_generator:generate_test_orders:54 - 成功生成 10 个测试订单
+2025-10-14 12:09:38 | INFO     | utils.test_data_generator:generate_test_verification_records:90 - 开始生成 5 个测试核销记录
+2025-10-14 12:09:38 | INFO     | utils.test_data_generator:generate_test_verification_records:125 - 成功生成 5 个测试核销记录
+2025-10-14 12:09:38 | INFO     | utils.test_data_generator:generate_all_test_data:177 - 所有测试数据生成完成
+2025-10-14 12:09:38 | INFO     | __main__:setup_test_environment:44 - 测试环境设置完成:
+2025-10-14 12:09:38 | INFO     | __main__:setup_test_environment:45 - - 生成了 5 个测试商品
+2025-10-14 12:09:38 | INFO     | __main__:setup_test_environment:46 - - 生成了 10 个测试订单
+2025-10-14 12:09:38 | INFO     | __main__:setup_test_environment:47 - - 生成了 5 个测试核销记录
+2025-10-14 12:13:18 | INFO     | __main__:test_order_monitoring:53 - 开始测试订单监控功能
+2025-10-14 12:13:18 | INFO     | core.order_manager:get_pending_orders:33 - 获取待处理订单: 2025-10-13 12:13:18 - 2025-10-14 12:13:18
+2025-10-14 12:13:18 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.list.get, 参数: {'start_time': '2025-10-13 12:13:18', 'end_time': '2025-10-14 12:13:18', 'order_status': 1, 'page_size': 100}
+2025-10-14 12:13:18 | INFO     | core.order_manager:get_pending_orders:44 - 获取到 1 个待处理订单
+2025-10-14 12:13:18 | INFO     | __main__:test_order_monitoring:58 - 获取到 1 个待处理订单
+2025-10-14 12:13:18 | INFO     | core.order_manager:process_order:60 - 开始处理订单: TEST202510140006
+2025-10-14 12:13:18 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.detail.get, 参数: {'order_sn': 'TEST202510140006'}
+2025-10-14 12:13:18 | INFO     | core.order_manager:_save_order_to_db:113 - 订单 TEST202510140006 已存在，更新信息
+2025-10-14 12:13:18 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.goods.send, 参数: {'order_sn': 'TEST202510140006', 'goods_info': {'goods_type': 'virtual', 'delivery_method': 'auto', 'delivery_content': {'type': 'card_password', 'content': 'EFZW6YBHQJ2NHIF4', 'instructions': '请妥善保管您的卡密信息'}, 'delivery_time': '2025-10-14 12:13:18'}}
+2025-10-14 12:13:19 | INFO     | core.mock_api_client:_mock_send_order_goods:187 - [模拟API] 订单 TEST202510140006 发货成功
+2025-10-14 12:13:19 | INFO     | core.order_manager:_auto_ship_order:157 - 订单 TEST202510140006 自动发货成功
+2025-10-14 12:13:19 | INFO     | core.order_manager:process_order:84 - 订单 TEST202510140006 处理成功
+2025-10-14 12:13:19 | INFO     | __main__:test_order_monitoring:66 - 订单监控测试完成，成功处理 1/1 个订单
+2025-10-14 12:13:39 | INFO     | __main__:test_order_monitoring:53 - 开始测试订单监控功能
+2025-10-14 12:13:39 | INFO     | core.order_manager:get_pending_orders:33 - 获取待处理订单: 2025-10-13 12:13:39 - 2025-10-14 12:13:39
+2025-10-14 12:13:39 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.list.get, 参数: {'start_time': '2025-10-13 12:13:39', 'end_time': '2025-10-14 12:13:39', 'order_status': 1, 'page_size': 100}
+2025-10-14 12:13:40 | INFO     | core.order_manager:get_pending_orders:44 - 获取到 0 个待处理订单
+2025-10-14 12:13:40 | INFO     | __main__:test_order_monitoring:58 - 获取到 0 个待处理订单
+2025-10-14 12:13:40 | INFO     | __main__:test_order_monitoring:66 - 订单监控测试完成，成功处理 0/0 个订单
+2025-10-14 12:13:45 | INFO     | __main__:test_verification:73 - 开始测试核销功能
+2025-10-14 12:13:45 | INFO     | __main__:test_verification:78 - 获取到 3 个未核销订单
+2025-10-14 12:13:45 | INFO     | __main__:test_verification:85 - 测试核销订单: TEST202510140001
+2025-10-14 12:13:45 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140001, 核销码: 6DA9N1K40XJGH4DE
+2025-10-14 12:13:45 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140001', 'verification_code': '6DA9N1K40XJGH4DE'}
+2025-10-14 12:13:46 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:250 - [模拟API] 订单 TEST202510140001 核销失败
+2025-10-14 12:13:46 | ERROR    | core.verification:verify_order:69 - 订单 TEST202510140001 核销失败
+2025-10-14 12:13:46 | INFO     | __main__:test_verification:87 - 核销结果: {'success': False, 'message': '核销失败', 'order_sn': 'TEST202510140001'}
+2025-10-14 12:13:46 | INFO     | __main__:test_verification:99 - 测试批量核销 3 个订单
+2025-10-14 12:13:46 | INFO     | core.verification:batch_verify_orders:90 - 开始批量核销，共 3 个订单
+2025-10-14 12:13:46 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140001, 核销码: 6DA9N1K40XJGH4DE
+2025-10-14 12:13:46 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140001', 'verification_code': '6DA9N1K40XJGH4DE'}
+2025-10-14 12:13:46 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140001 核销成功
+2025-10-14 12:13:46 | INFO     | core.verification:verify_order:57 - 订单 TEST202510140001 核销成功
+2025-10-14 12:13:46 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140002, 核销码: QXW4EEB0ZN0JN42O
+2025-10-14 12:13:46 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140002', 'verification_code': 'QXW4EEB0ZN0JN42O'}
+2025-10-14 12:13:46 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140002 核销成功
+2025-10-14 12:13:46 | INFO     | core.verification:verify_order:57 - 订单 TEST202510140002 核销成功
+2025-10-14 12:13:46 | INFO     | core.verification:verify_order:24 - 开始核销订单: TEST202510140006, 核销码: K3RO4PE6KNOZDS0S
+2025-10-14 12:13:46 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.virtual.goods.verify, 参数: {'order_sn': 'TEST202510140006', 'verification_code': 'K3RO4PE6KNOZDS0S'}
+2025-10-14 12:13:47 | INFO     | core.mock_api_client:_mock_verify_virtual_goods:241 - [模拟API] 订单 TEST202510140006 核销成功
+2025-10-14 12:13:47 | INFO     | core.verification:verify_order:57 - 订单 TEST202510140006 核销成功
+2025-10-14 12:13:47 | INFO     | core.verification:batch_verify_orders:115 - 批量核销完成，成功: 3, 失败: 0
+2025-10-14 12:13:47 | INFO     | __main__:test_verification:101 - 批量核销结果: {'total': 3, 'success': 3, 'failed': 0, 'results': [{'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140001', 'verification_time': '2025-10-14T12:13:46.418247'}, {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140002', 'verification_time': '2025-10-14T12:13:46.850459'}, {'success': True, 'message': '核销成功', 'order_sn': 'TEST202510140006', 'verification_time': '2025-10-14T12:13:47.174540'}]}
+2025-10-14 12:13:47 | INFO     | __main__:test_verification:103 - 核销功能测试完成
+2025-10-14 12:14:03 | INFO     | __main__:test_api_client:110 - 开始测试API客户端功能
+2025-10-14 12:14:03 | INFO     | __main__:test_api_client:116 - 测试获取订单列表
+2025-10-14 12:14:03 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.list.get, 参数: {'page': 1, 'page_size': 5}
+2025-10-14 12:14:03 | INFO     | __main__:test_api_client:118 - 订单列表: {'order_list_get_response': {'order_list': [{'order_sn': 'TEST202510140000', 'buyer_id': 'buyer_0000', 'buyer_name': '测试买家0', 'order_status': 0, 'pay_time': '2025-10-13 12:08:23', 'order_amount': 77.67, 'goods_list': [{'goods_id': 'goods_0', 'goods_name': '测试虚拟商品0', 'goods_type': 2, 'quantity': 1, 'price': 88.99}], 'created_at': '2025-10-13 12:08:23'}, {'order_sn': 'TEST202510140001', 'buyer_id': 'buyer_0001', 'buyer_name': '测试买家1', 'order_status': 0, 'pay_time': '2025-10-13 12:38:23', 'order_amount': 99.29, 'goods_list': [{'goods_id': 'goods_1', 'goods_name': '测试虚拟商品1', 'goods_type': 1, 'quantity': 1, 'price': 23.7}], 'created_at': '2025-10-13 12:38:23'}, {'order_sn': 'TEST202510140002', 'buyer_id': 'buyer_0002', 'buyer_name': '测试买家2', 'order_status': 0, 'pay_time': '2025-10-13 13:08:23', 'order_amount': 20.4, 'goods_list': [{'goods_id': 'goods_2', 'goods_name': '测试虚拟商品2', 'goods_type': 3, 'quantity': 1, 'price': 24.49}], 'created_at': '2025-10-13 13:08:23'}, {'order_sn': 'TEST202510140003', 'buyer_id': 'buyer_0003', 'buyer_name': '测试买家3', 'order_status': 2, 'pay_time': '2025-10-13 13:38:23', 'order_amount': 22.19, 'goods_list': [{'goods_id': 'goods_3', 'goods_name': '测试虚拟商品3', 'goods_type': 2, 'quantity': 1, 'price': 11.5}], 'created_at': '2025-10-13 13:38:23'}, {'order_sn': 'TEST202510140004', 'buyer_id': 'buyer_0004', 'buyer_name': '测试买家4', 'order_status': 0, 'pay_time': '2025-10-13 14:08:23', 'order_amount': 87.79, 'goods_list': [{'goods_id': 'goods_4', 'goods_name': '测试虚拟商品4', 'goods_type': 1, 'quantity': 1, 'price': 35.75}], 'created_at': '2025-10-13 14:08:23'}], 'total_count': 10, 'page': 1, 'page_size': 5}}
+2025-10-14 12:14:03 | INFO     | __main__:test_api_client:121 - 测试获取商品列表
+2025-10-14 12:14:03 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.goods.list.get, 参数: {'page': 1, 'page_size': 5}
+2025-10-14 12:14:03 | INFO     | __main__:test_api_client:123 - 商品列表: {'goods_list_get_response': {'goods_list': [{'goods_id': 'goods_0', 'goods_name': '测试虚拟商品0', 'goods_type': 1, 'goods_status': 1, 'price': 15.14, 'stock': 954, 'description': '这是测试虚拟商品0的描述'}, {'goods_id': 'goods_1', 'goods_name': '测试虚拟商品1', 'goods_type': 3, 'goods_status': 1, 'price': 63.54, 'stock': 807, 'description': '这是测试虚拟商品1的描述'}, {'goods_id': 'goods_2', 'goods_name': '测试虚拟商品2', 'goods_type': 1, 'goods_status': 1, 'price': 41.77, 'stock': 574, 'description': '这是测试虚拟商品2的描述'}, {'goods_id': 'goods_3', 'goods_name': '测试虚拟商品3', 'goods_type': 1, 'goods_status': 1, 'price': 19.7, 'stock': 290, 'description': '这是测试虚拟商品3的描述'}, {'goods_id': 'goods_4', 'goods_name': '测试虚拟商品4', 'goods_type': 2, 'goods_status': 1, 'price': 99.55, 'stock': 763, 'description': '这是测试虚拟商品4的描述'}], 'total_count': 5, 'page': 1, 'page_size': 5}}
+2025-10-14 12:14:03 | INFO     | __main__:test_api_client:126 - 测试获取核销记录
+2025-10-14 12:14:03 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.verification.record.get, 参数: {'page': 1, 'page_size': 5}
+2025-10-14 12:14:03 | INFO     | __main__:test_api_client:128 - 核销记录: {'verification_record_get_response': {'records': [], 'total_count': 0, 'page': 1, 'page_size': 5}}
+2025-10-14 12:14:03 | INFO     | __main__:test_api_client:130 - API客户端功能测试完成
+2025-10-14 12:14:10 | INFO     | __main__:test_order_monitoring:53 - 开始测试订单监控功能
+2025-10-14 12:14:10 | INFO     | core.order_manager:get_pending_orders:33 - 获取待处理订单: 2025-10-13 12:14:10 - 2025-10-14 12:14:10
+2025-10-14 12:14:10 | INFO     | core.mock_api_client:_make_mock_request:87 - [模拟API] 调用方法: pdd.order.list.get, 参数: {'start_time': '2025-10-13 12:14:10', 'end_time': '2025-10-14 12:14:10', 'order_status': 1, 'page_size': 100}
+2025-10-14 12:14:10 | INFO     | core.order_manager:get_pending_orders:44 - 获取到 0 个待处理订单
+2025-10-14 12:14:10 | INFO     | __main__:test_order_monitoring:58 - 获取到 0 个待处理订单
+2025-10-14 12:14:10 | INFO     | __main__:test_order_monitoring:66 - 订单监控测试完成，成功处理 0/0 个订单
+2025-10-14 12:21:11 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 12:21:11 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 12:21:11 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 12:21:11 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 12:21:11 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 12:21:11 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 12:21:11 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 12:21:11 | INFO     | __main__:run_web_server:90 - Web服务器启动中...
+2025-10-14 15:16:55 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 15:16:55 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 15:16:55 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 15:16:55 | INFO     | __main__:__init__:30 - 拼多多自动核销系统初始化完成
+2025-10-14 15:16:57 | INFO     | utils.logger:setup_logger:37 - 日志系统初始化完成
+2025-10-14 15:16:57 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 15:16:57 | INFO     | core.mock_api_client:__init__:29 - 模拟API客户端初始化完成（测试模式）
+2025-10-14 15:16:57 | INFO     | __main__:run_web_server:90 - Web服务器启动中...

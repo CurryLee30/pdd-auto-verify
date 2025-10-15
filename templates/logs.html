@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拼多多自动核销系统 - 日志查看</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .log-content {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.4;
+            max-height: 600px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .log-line {
+            margin-bottom: 0.25rem;
+        }
+        .log-error {
+            color: #dc3545;
+        }
+        .log-warning {
+            color: #fd7e14;
+        }
+        .log-info {
+            color: #0d6efd;
+        }
+        .log-success {
+            color: #198754;
+        }
+    </style>
+</head>
+<body>
+    <!-- 侧边栏 -->
+    <nav class="sidebar position-fixed top-0 start-0 w-25 p-3">
+        <div class="d-flex flex-column">
+            <h4 class="mb-4">
+                <i class="bi bi-shop"></i>
+                拼多多自动核销系统
+            </h4>
+            
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/">
+                        <i class="bi bi-speedometer2"></i>
+                        仪表板
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/orders">
+                        <i class="bi bi-list-ul"></i>
+                        订单管理
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/verification">
+                        <i class="bi bi-check-circle"></i>
+                        核销管理
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="/settings">
+                        <i class="bi bi-gear"></i>
+                        系统设置
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link active" href="/logs">
+                        <i class="bi bi-file-text"></i>
+                        日志查看
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>日志查看</h2>
+            <div>
+                <button class="btn btn-primary" onclick="refreshLogs()">
+                    <i class="bi bi-arrow-clockwise"></i>
+                    刷新
+                </button>
+                <button class="btn btn-outline-secondary" onclick="clearLogs()">
+                    <i class="bi bi-trash"></i>
+                    清空日志
+                </button>
+                <button class="btn btn-outline-info" onclick="downloadLogs()">
+                    <i class="bi bi-download"></i>
+                    下载日志
+                </button>
+            </div>
+        </div>
+
+        <!-- 日志筛选器 -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">日志筛选</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <select class="form-select" id="levelFilter" onchange="filterLogs()">
+                            <option value="">所有级别</option>
+                            <option value="ERROR">错误</option>
+                            <option value="WARNING">警告</option>
+                            <option value="INFO">信息</option>
+                            <option value="SUCCESS">成功</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="searchFilter" placeholder="搜索关键词" onkeyup="filterLogs()">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="datetime-local" class="form-control" id="timeFilter" onchange="filterLogs()">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="autoRefresh" onchange="toggleAutoRefresh()">
+                            <label class="form-check-label" for="autoRefresh">
+                                自动刷新
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 日志内容 -->
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">系统日志</h5>
+                <div>
+                    <span class="badge bg-secondary" id="logCount">0 条记录</span>
+                    <span class="badge bg-danger" id="errorCount">0 错误</span>
+                    <span class="badge bg-warning" id="warningCount">0 警告</span>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="log-content" id="logContent">
+                    {{ log_content }}
+                </div>
+            </div>
+        </div>
+
+        <!-- 日志统计 -->
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">总日志数</h5>
+                        <h3 class="mb-0" id="totalLogs">0</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-danger">错误数</h5>
+                        <h3 class="mb-0" id="totalErrors">0</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-warning">警告数</h5>
+                        <h3 class="mb-0" id="totalWarnings">0</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let autoRefreshInterval = null;
+
+        // 刷新日志
+        function refreshLogs() {
+            fetch('/api/logs')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        updateLogContent(data.log_content);
+                        updateLogStats(data.stats);
+                    } else {
+                        alert('获取日志失败：' + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert('请求失败：' + error);
+                });
+        }
+
+        // 更新日志内容
+        function updateLogContent(logContent) {
+            const logElement = document.getElementById('logContent');
+            logElement.textContent = logContent;
+            
+            // 添加颜色高亮
+            highlightLogLines();
+            
+            // 滚动到底部
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+
+        // 高亮日志行
+        function highlightLogLines() {
+            const logElement = document.getElementById('logContent');
+            const lines = logElement.textContent.split('\n');
+            let highlightedContent = '';
+            
+            lines.forEach(line => {
+                if (line.includes('ERROR')) {
+                    highlightedContent += '<div class="log-line log-error">' + line + '</div>';
+                } else if (line.includes('WARNING')) {
+                    highlightedContent += '<div class="log-line log-warning">' + line + '</div>';
+                } else if (line.includes('INFO')) {
+                    highlightedContent += '<div class="log-line log-info">' + line + '</div>';
+                } else if (line.includes('SUCCESS')) {
+                    highlightedContent += '<div class="log-line log-success">' + line + '</div>';
+                } else {
+                    highlightedContent += '<div class="log-line">' + line + '</div>';
+                }
+            });
+            
+            logElement.innerHTML = highlightedContent;
+        }
+
+        // 更新日志统计
+        function updateLogStats(stats) {
+            document.getElementById('logCount').textContent = stats.total + ' 条记录';
+            document.getElementById('errorCount').textContent = stats.errors + ' 错误';
+            document.getElementById('warningCount').textContent = stats.warnings + ' 警告';
+            document.getElementById('totalLogs').textContent = stats.total;
+            document.getElementById('totalErrors').textContent = stats.errors;
+            document.getElementById('totalWarnings').textContent = stats.warnings;
+        }
+
+        // 筛选日志
+        function filterLogs() {
+            const levelFilter = document.getElementById('levelFilter').value;
+            const searchFilter = document.getElementById('searchFilter').value;
+            const timeFilter = document.getElementById('timeFilter').value;
+            
+            fetch('/api/logs/filter', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    level: levelFilter,
+                    search: searchFilter,
+                    time: timeFilter
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    updateLogContent(data.log_content);
+                    updateLogStats(data.stats);
+                } else {
+                    alert('筛选失败：' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('请求失败：' + error);
+            });
+        }
+
+        // 清空日志
+        function clearLogs() {
+            if (confirm('确定要清空所有日志吗？此操作不可恢复。')) {
+                fetch('/api/logs/clear', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('日志已清空！');
+                        refreshLogs();
+                    } else {
+                        alert('清空失败：' + data.message);
+                    }
+                })
+                .catch(error => {
+                    alert('请求失败：' + error);
+                });
+            }
+        }
+
+        // 下载日志
+        function downloadLogs() {
+            fetch('/api/logs/download')
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'pdd_auto_verify_logs_' + new Date().toISOString().slice(0, 10) + '.txt';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                })
+                .catch(error => {
+                    alert('下载失败：' + error);
+                });
+        }
+
+        // 切换自动刷新
+        function toggleAutoRefresh() {
+            const autoRefreshCheckbox = document.getElementById('autoRefresh');
+            
+            if (autoRefreshCheckbox.checked) {
+                autoRefreshInterval = setInterval(refreshLogs, 5000); // 每5秒刷新
+            } else {
+                if (autoRefreshInterval) {
+                    clearInterval(autoRefreshInterval);
+                    autoRefreshInterval = null;
+                }
+            }
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始高亮
+            highlightLogLines();
+            
+            // 统计日志数量
+            const logContent = document.getElementById('logContent').textContent;
+            const lines = logContent.split('\n').filter(line => line.trim());
+            const errors = lines.filter(line => line.includes('ERROR')).length;
+            const warnings = lines.filter(line => line.includes('WARNING')).length;
+            
+            document.getElementById('logCount').textContent = lines.length + ' 条记录';
+            document.getElementById('errorCount').textContent = errors + ' 错误';
+            document.getElementById('warningCount').textContent = warnings + ' 警告';
+            document.getElementById('totalLogs').textContent = lines.length;
+            document.getElementById('totalErrors').textContent = errors;
+            document.getElementById('totalWarnings').textContent = warnings;
+        });
+
+        // 页面卸载时清理定时器
+        window.addEventListener('beforeunload', function() {
+            if (autoRefreshInterval) {
+                clearInterval(autoRefreshInterval);
+            }
+        });
+    </script>
+</body>
+</html>
